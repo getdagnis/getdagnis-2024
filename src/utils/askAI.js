@@ -6,8 +6,20 @@ export async function askAI(question, absurdity) {
       body: JSON.stringify({ question, absurdity: String(absurdity) }),
     });
 
-    const data = await res.json();
-    return data.content || data.error;
+    const txt = await res.text();
+    let data;
+    try {
+      data = JSON.parse(txt);
+    } catch {
+      console.warn('Worker returned non-JSON response:', txt);
+      return txt || 'Unexpected worker response';
+    }
+
+    if (!res.ok) {
+      return data.error || data.details || `Error ${res.status}`;
+    }
+
+    return data.content || data.error || 'No content';
   } catch (err) {
     console.error('Worker call failed:', err);
     return 'Sorry. Cloudflare Worker request failed.';
