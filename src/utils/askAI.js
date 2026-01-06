@@ -1,6 +1,6 @@
 export async function askAI(question, absurdity) {
   try {
-    const res = await fetch('https://getdagnis-worker.getdagnis.workers.dev', {
+    const res = await fetch('https://getdagnis-worker-prod.getdagnis.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question, absurdity: String(absurdity) }),
