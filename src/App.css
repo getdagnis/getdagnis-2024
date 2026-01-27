@@ -30,13 +30,13 @@
 
   --siteWidth: 90vw;
   --siteMaxWidth: 1024px;
-  --gridItemHeight: 9rem;
+  --gridItemHeight: 10rem;
 
   --headerAndFooterHeight: calc(80px + 30px + 320px + 2 * rem);
   --mobileHeaderAndFooterHeight: calc(80px + 30px + 320px + 2 * rem);
 
   @media (max-width: 1279px) {
-    --gridItemHeight: 9rem;
+    --gridItemHeight: 10rem;
     --siteWidth: 96vw;
   }
 
@@ -60,7 +60,7 @@
 
   @media screen and (min-width: 1280px) and (min-height: 780px) {
     --siteMaxWidth: 1120px;
-    --gridItemHeight: 9.75rem;
+    --gridItemHeight: 10.5rem;
   }
 }
 

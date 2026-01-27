@@ -64,7 +64,7 @@
   justify-content: space-between;
   align-items: flex-start;
   text-align: left;
-  height: var(--gridItemHeight);
+  min-height: var(--gridItemHeight);
   padding: 0.4rem 0.45rem 0.65rem 0.75rem;
   background: var(--colorGrey3);
   color: white;

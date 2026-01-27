@@ -4,72 +4,63 @@
       "key": "lng_js",
       "section": "dev",
       "title": "Next.js // React // TypeScript",
-      "describe": "12+ years using JavaScript profesionally. 6+ years using: Typescript // React // Node // Redux // Material UI // MobX // Chakra UI // Gatsby // Mantine // Webpack // Babel // ESlint // Jest // React Native // Expo etc.",
-      "details": "Professional skills with popular frameworks and tools for front and back-end development.",
+      "describe": "Primary production stack for building modern, content-heavy and unique single page web applications. 7+ years with React, TypeScript focusing on scalability and long-term maintainability. Experienced in both startup and large enterprise environments.",
       "class": "dev-large"
     },
     {
       "key": "lng_css",
       "section": "dev",
       "title": "CSS3+ // SASS // LESS // JSSS",
-      "describe": "20+ years of loving to design complex, responsive, animated and UX engaging CSS layouts",
-      "details": "Love for designing complex, responsive, animated CSS layouts",
+      "describe": "Designing complex, responsive layouts with strong focus on UX and brand-awareness",
       "class": "dark-item regular-size"
     },
     {
       "key": "lng_html",
       "section": "dev",
       "title": "HTML5+ // SEO",
-      "describe": "Semantic, cross-browser, accessible and SEO optimized HTML skills since around 2003",
-      "details": "Crafting high-quality, standards-compliant web pages.",
+      "describe": "Semantic, accessible, enterprise-ready HTML, with attention to performance and scalability",
       "class": "dark-item regular-size"
     },
     {
       "key": "apps",
       "section": "dev",
       "title": "Mobile Apps",
-      "describe": "Good experience with React Native, working on cross-platform iOS and Android mobile apps",
-      "details": "Building high-performance single-page applications with modern frameworks.",
+      "describe": "Experience building cross-platform/mobile applications using React Native, Expo, Electron",
       "class": "dark-item regular-size"
     },
     {
       "key": "ai",
       "section": "dev",
       "title": "AI integration // Prompts",
-      "describe": "Active user of AI services // OpenAI API // AI model integration // Prompt design",
-      "details": "Expertise in integrating AI services and crafting effective prompts for various applications.",
+      "describe": "Real world AI integration, OpenAI/OpenRouter APIs, CloudFlare workers",
       "class": "regular-size"
     },
     {
       "key": "lng_php",
       "section": "dev",
       "title": "PHP // SQL // NoSQL",
-      "describe": "Good experience working with PHP & MySQL since 2003 // Now also PostgreSQL // MongoDB",
-      "details": "Skilled in both traditional and modern database technologies.",
+      "describe": "Experience using legacy and modern backend/data services, PostgreSQL, CMS",
       "class": "dark-item regular-size"
     },
     {
       "key": "git",
       "section": "dev",
       "title": "Version control",
-      "describe": "Senior experience using versioning tools // GitHub // GitLab // Bitbucket",
-      "details": "Deep proficiency in Git and related platforms for effective version management.",
+      "describe": "Daily professional/advanced use of Git and CI/CD in large size team environments",
       "class": "regular-size"
     },
     {
       "key": "rest",
       "section": "dev",
       "title": "Rest APIs",
-      "describe": "Experienced designing and integrating APIs for RESTful services using",
-      "details": "Advanced design and integration of web APIs for robust data interchange.",
+      "describe": "Designing and integrating REST APIs for B2B platforms, 3rd-party services and internal systems",
       "class": "regular-size"
     },
     {
       "key": "cloud",
       "section": "dev",
       "title": "Cloud services",
-      "describe": "Excellent skills using Firebase // Heroku // Netlify // AWS // Serverless // Cloud integrations",
-      "details": "Extensive experience in deploying and managing applications in the cloud.",
+      "describe": "Deploying and operating applications in modern cloud environments: Vercel, Cloudflare",
       "class": "regular-size"
     },
 
@@ -77,24 +68,21 @@
       "key": "test",
       "section": "dev",
       "title": "Testing",
-      "describe": "Day-to-day testing experience using React Testing Library // Jest // Cypress",
-      "details": "Implementing rigorous testing protocols to ensure software quality.",
+      "describe": "Writing/maintaining tests as part of daily development workflow: Jest, React Testing Library",
       "class": "regular-size"
     },
     {
       "key": "debug",
       "section": "dev",
       "title": "Debugging",
-      "describe": "Chrome DevTools // Fiddler // Wireshark // VS Code",
-      "details": "Skilled in efficient problem-solving with top industry tools.",
+      "describe": "Systematic debugging of frontend and API-related issues using wide range of tools",
       "class": "regular-size"
     },
     {
       "key": "docker",
       "section": "dev",
       "title": "Docker // Shell scripting",
-      "describe": "Docker // Docker Toolbox // Bash scripts for automation",
-      "details": "Expertise in containerization and script automation for scalable deployments.",
+      "describe": "Using Docker and shell scripts for local env, tooling, automation and dev workflows",
       "class": "regular-size"
     },
 
@@ -102,8 +90,7 @@
       "key": "agile",
       "section": "dev",
       "title": "Scrum, CI/CD, Agile",
-      "describe": "Agile methodologies, Azure, Scrum, Kanban, JIRA for teams, JIRA API",
-      "details": "Agile methodologies, Azure, Scrum, Kanban, JIRA for teams, JIRA API",
+      "describe": "Working in Agile teams with Scrum, Kanban, CI/CD, issue tracking and team collab tools",
       "class": "regular-size"
     }
   ]
