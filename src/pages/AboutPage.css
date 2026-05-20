@@ -30,8 +30,10 @@
 
 .shared-link > p,
 .shared-bottom-link > p {
-  margin-top: 1rem;
-  font-size: 0.85rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-style: dotted;
   font-weight: 400;
   color: #777;
   cursor: pointer;
@@ -280,7 +282,9 @@
   left: 50%;
   transform: translate(-60%, 105%);
   border-radius: 1rem;
-  box-shadow: 0 0 1rem #ccc, 0 0 10px #ddd;
+  box-shadow:
+    0 0 1rem #ccc,
+    0 0 10px #ddd;
   z-index: 99;
 }
 
