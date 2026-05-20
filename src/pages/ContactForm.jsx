@@ -96,7 +96,7 @@ function ContactForm() {
         <div id="ty-wrapper">
           <h1 className="modal-h1">
             Thank you!
-            <br /> Hope I read it soon.
+            <br /> I hope I read it soon.
           </h1>
           <div
             className="modal-button"
