@@ -96,7 +96,7 @@ function ContactForm() {
         <div id="ty-wrapper">
           <h1 className="modal-h1">
             Thank you!
-            <br /> I'll check my email soon.
+            <br /> Hope I read it soon.
           </h1>
           <div
             className="modal-button"
@@ -105,7 +105,7 @@ function ContactForm() {
               localStorage.removeItem('message');
             }}
           >
-            Back to portfolio
+            Return
           </div>
         </div>
       </div>
@@ -117,11 +117,8 @@ function ContactForm() {
       <form id="contact-form" onSubmit={handleSubmit}>
         <div className="top" style={{ animationDelay: '0.3s' }}>
           <label className="label" htmlFor="email">
-            Reach out to me
+            Reach out
           </label>
-          <div className="subtitle" style={{ animationDelay: '0.6s' }}>
-            with whatever is on your mind <em>*list of exceptions to be implemented</em>
-          </div>
         </div>
         <input
           id="email"
@@ -151,7 +148,7 @@ function ContactForm() {
           type="submit"
           disabled={state.submitting || message.length <= 5}
         >
-          {state.submitting ? 'Sending...' : 'Send!'}
+          {state.submitting ? 'SENDING...' : 'SEND'}
         </button>
         <div className="modal-close" onClick={handleClose}></div>
       </form>

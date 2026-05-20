@@ -94,7 +94,7 @@
 #contact-form textarea:focus,
 #contact-form .modal-button:hover {
   outline: none;
-  border: 2px solid var(--walker);
+  border: 2px solid black;
 }
 
 #contact-form button:disabled {
@@ -155,41 +155,6 @@
 
 #thanks-message {
   text-align: center;
-}
-
-@-webkit-keyframes shadow-pop-br {
-  0% {
-    -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e,
-      0 0 #3e3e3e;
-    box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-    -webkit-transform: translateX(0) translateY(0);
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    -webkit-box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e, 4px 4px #3e3e3e, 5px 5px #3e3e3e,
-      6px 6px #3e3e3e, 7px 7px #3e3e3e, 4px 4px #3e3e3e;
-    box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e, 4px 4px #3e3e3e, 5px 5px #3e3e3e, 6px 6px #3e3e3e,
-      7px 7px #3e3e3e, 4px 4px #3e3e3e;
-    -webkit-transform: translateX(-4px) translateY(-4px);
-    transform: translateX(-4px) translateY(-4px);
-  }
-}
-@keyframes shadow-pop-br {
-  0% {
-    -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e,
-      0 0 #3e3e3e;
-    box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-    -webkit-transform: translateX(0) translateY(0);
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    -webkit-box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e, 4px 4px #3e3e3e, 5px 5px #3e3e3e,
-      6px 6px #3e3e3e, 7px 7px #3e3e3e, 4px 4px #3e3e3e;
-    box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e, 4px 4px #3e3e3e, 5px 5px #3e3e3e, 6px 6px #3e3e3e,
-      7px 7px #3e3e3e, 4px 4px #3e3e3e;
-    -webkit-transform: translateX(-4px) translateY(-4px);
-    transform: translateX(-4px) translateY(-4px);
-  }
 }
 
 @keyframes fadeIn {

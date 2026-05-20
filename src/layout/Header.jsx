@@ -216,7 +216,7 @@ function Header() {
             <NavLink to="/about">about</NavLink>
           </ButtonNav>
           <ButtonNav>
-            <NavLink to="/cv">cv</NavLink>
+            <NavLink to="/contact">contact</NavLink>
           </ButtonNav>
           <ButtonNav>
             <NavLink to="/404">404</NavLink>
