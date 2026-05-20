@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: left;
   height: 100vh;
   max-height: 100dvh;
   box-sizing: border-box;
@@ -22,13 +23,48 @@
 .modal-extra-h1 {
   width: fit-content;
   max-width: 768px;
-  text-align: center;
+  text-align: left;
   line-height: 1.2;
   color: black;
   letter-spacing: -0.1rem;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 3rem;
+}
+
+.wip-message {
+  text-align: left;
+  max-width: fit-content;
+  background: #ffffff44;
+  padding: 2rem 3rem;
+  border-radius: var(--radius);
+}
+
+.wip-message h1 {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.wip-message span:hover {
+  position: relative;
+  color: var(--accent);
+  transition: color 0.1s ease-in-out;
+}
+
+.wip-message span::after {
+  content: 'This is not a link. You must remain here.';
+  display: block;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.95rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+  text-wrap: nowrap;
+  color: white;
+  background: var(--backgroundRed);
 }
 
 .wip h3 {
@@ -39,7 +75,7 @@
 .wip-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
 }
@@ -50,7 +86,7 @@
   width: fit-content;
   min-width: 12rem;
   max-width: 90vw;
-  margin-top: 1.2rem;
+  margin-top: 2.5rem;
   text-align: center;
   padding: 0.55rem 1.15rem;
   border: 2.25px solid black;
@@ -62,12 +98,13 @@
 }
 
 .modal-button:hover {
-  background-color: rgba(256, 256, 256, 1);
+  background-color: var(--accent);
+  color: white;
 }
 
-.wip-image {
+/* .wip-image {
   width: 6rem;
   height: 6rem;
   background: url('../assets/wip.svg') center center no-repeat;
   margin-bottom: 1rem;
-}
+} */

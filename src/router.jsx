@@ -10,6 +10,7 @@ import SkillsPage from './pages/SkillsPage';
 import SharedPage from './pages/SharedPage';
 import VotePage from './pages/VotePage';
 import WipPage from './pages/WipPage';
+import CvPage from './pages/CvPage';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: '/shared', element: <App children={<SharedPage />} /> },
       { path: '/vote', element: <App children={<VotePage />} /> },
       { path: '/wip', element: <App children={<WipPage />} /> },
+      { path: '/cv', element: <App children={<CvPage />} /> },
       { path: '/404', element: <App children={<NotFoundPage />} /> },
       { path: '*', element: <App children={<NotFoundPage />} /> },
     ],

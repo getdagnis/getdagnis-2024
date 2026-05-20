@@ -71,7 +71,7 @@ function Header() {
 
     setTimeout(
       () => setArrowState({ backgroundPositionX: '100%', transition: 'background-position-x 0.2s ease-out' }),
-      500
+      500,
     );
   };
 
@@ -80,15 +80,15 @@ function Header() {
 
     setTimeout(
       () => setArrowState({ backgroundPositionX: '115%', transition: 'background-position-x 0.1s ease-out' }),
-      100
+      100,
     );
     setTimeout(
       () => setArrowState({ backgroundPositionX: '100%', transition: 'background-position-x 0.2s ease-out' }),
-      200
+      200,
     );
     setTimeout(
       () => setArrowState({ backgroundPositionX: '102%', transition: 'background-position-x 0.1s ease-out' }),
-      400
+      400,
     );
 
     setBecomeState({ transform: 'translateX(0.5%)', transition: 'all 0.01s ease-out' });
@@ -114,7 +114,7 @@ function Header() {
             animationFillMode: 'forwards',
             transition: 'transform 0.05s ease-out',
           }),
-        600
+        600,
       );
 
       setTimeout(
@@ -124,7 +124,7 @@ function Header() {
             animationFillMode: 'forwards',
             transition: 'transform 0.05s ease-out',
           }),
-        2000
+        2000,
       );
 
       setTimeout(() => {
@@ -214,6 +214,9 @@ function Header() {
           </ButtonNav>
           <ButtonNav>
             <NavLink to="/about">about</NavLink>
+          </ButtonNav>
+          <ButtonNav>
+            <NavLink to="/cv">cv</NavLink>
           </ButtonNav>
           <ButtonNav>
             <NavLink to="/404">404</NavLink>

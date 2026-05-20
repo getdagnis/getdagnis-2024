@@ -1,0 +1,269 @@
+#cv {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0 4rem;
+  animation: fade-in 0.2s ease-in-out backwards;
+}
+
+#cv .cv-inner {
+  margin: 0 auto;
+  padding: 0;
+  color: var(--colorGrey8);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+}
+
+#cv .cv-main {
+  display: flex;
+  flex-direction: column;
+}
+
+#cv h1 {
+  letter-spacing: -0.1rem;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+}
+
+#cv .extra-small {
+  color: #aaa;
+  font-size: 0.5rem;
+}
+
+@media screen and (min-width: 920px) {
+  #cv .cv-inner {
+    grid-template-columns: 1.8fr 1fr;
+    grid-gap: 2.5rem;
+  }
+}
+
+#cv h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+#cv h3 {
+  margin: 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#cv p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+#cv a {
+  color: var(--colorGrey8);
+  text-decoration: underline;
+}
+
+#cv a:hover {
+  color: var(--walker);
+}
+
+#cv .cv-contact {
+  margin-top: 1rem;
+}
+
+#cv .cv-job,
+#cv .cv-job-intro {
+  position: relative;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem 1rem 0.25rem;
+  background: #ddd;
+  border-radius: calc(var(--radius) * 1.25);
+  border: 0.1rem solid black;
+}
+
+#cv .cv-job-intro {
+  margin: 0 0 2rem;
+  padding: 1rem;
+}
+
+#cv .cv-job-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.125rem;
+  margin-bottom: 0.5rem;
+}
+
+#cv .cv-job-year {
+  position: absolute;
+  top: -2.25rem;
+  display: flex;
+  font-family: monospace;
+  width: fit-content;
+  padding: 0.25rem 0.75rem;
+  background: var(--walker);
+  color: white;
+  border: 0.1rem solid black;
+  border-radius: var(--radius);
+}
+
+#cv .cv-job-year.year-other {
+  top: -0.85rem;
+  background: white;
+  color: black;
+}
+
+#cv .cv-job-title {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+}
+
+#cv .cv-job-employer {
+  flex: 1;
+  letter-spacing: -0.02em;
+}
+
+#cv .cv-job-stack {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+#cv .cv-job-stack span {
+  font-family: monospace;
+}
+
+#cv .cv-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#cv .cv-skills-block {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1rem;
+}
+
+#cv .cv-skills-block:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+#cv .cv-skills-block h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+#cv .cv-skills-block ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#cv .cv-skills-block ul li {
+  margin-bottom: 0.3rem;
+}
+
+.zigzag-divider {
+  position: relative;
+  width: 405px;
+  height: 20px;
+  margin: 0.5rem auto 2.5rem;
+  background: url('/zigzag.svg') center center no-repeat;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.rainbow {
+  transition: color 0.3s ease;
+}
+
+.rainbow:hover {
+  animation: rainbow-flash 1s 0.5s infinite;
+}
+
+@keyframes rainbow-flash {
+  0% {
+    color: var(--walker);
+  }
+  14% {
+    color: orange;
+  }
+  28% {
+    color: yellow;
+  }
+  42% {
+    color: yellowgreen;
+  }
+  57% {
+    color: blue;
+  }
+  71% {
+    color: purple;
+  }
+  85% {
+    color: violet;
+  }
+  100% {
+    color: var(--walker);
+  }
+}
+
+#cv p.text-small-uppercase,
+#cv span.text-small-uppercase {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 920px) {
+  #cv .cv-sidebar {
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  #cv .cv-skills-block {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 1rem;
+  }
+
+  #cv .cv-skills-block:first-child {
+    border-top: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #cv h1 {
+    font-size: 2.1rem;
+  }
+
+  #cv h2 {
+    font-size: 0.95rem;
+  }
+
+  #cv .cv-job-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  #cv .cv-job-year {
+    min-width: initial;
+  }
+}

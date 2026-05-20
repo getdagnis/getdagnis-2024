@@ -8,7 +8,7 @@ export const SCREEN_WIDTHS = {
 
 export const DESIGN_FILTERS = [
   { key: 'all', title: 'All', display: true, mobile: true },
-  { key: 'identity', title: 'Identities', display: true, mobile: false },
+  { key: 'identity', title: 'Created Identities', display: true, mobile: false },
   { key: 'smart', title: 'Smart', display: true, mobile: true },
   { key: 'famous', title: 'Famous', display: true, mobile: true },
   { key: 'sports', title: 'Sports', display: true, mobile: true },
