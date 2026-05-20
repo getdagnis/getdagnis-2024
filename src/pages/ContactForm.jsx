@@ -105,7 +105,7 @@ function ContactForm() {
               localStorage.removeItem('message');
             }}
           >
-            Return
+            RETURN
           </div>
         </div>
       </div>
