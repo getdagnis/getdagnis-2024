@@ -14,7 +14,7 @@ function WipPage() {
           FE built with Vite + React before AI agents. <br />
           What little BE there is: Firebase for voting. Cloudeflare for API workers.
           <br />
-          Hand designed. Line-by-line hand written code/CSS. Hand animated. <br />
+          Hand designed. Line-by-line hand written code/CSS. Hand written animations. <br />
           Mainly missing: actually collecting the works for the projects through 20k archived files.
           <br />
           And yes: the logos/identities featured here that you'll see in a moment are designed by me.
