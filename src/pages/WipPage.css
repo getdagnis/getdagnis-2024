@@ -20,6 +20,12 @@
   user-select: none;
 }
 
+ul.wip-ul {
+  line-height: 1.5;
+  width: 100%;
+  max-width: 60rem;
+}
+
 .modal-extra-h1 {
   width: fit-content;
   max-width: 768px;

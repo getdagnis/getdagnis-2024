@@ -1,5 +1,3 @@
-import { NavLink } from 'react-router-dom';
-
 import DesignPage from './DesignPage';
 import './WipPage.css';
 
@@ -10,28 +8,35 @@ function WipPage() {
       <div className="wip">
         <div className="wip-message">
           <h1 className="modal-extra-h1">WORK IN PROGRESS</h1>
-          Estimated time of completion: beyond human comprehension. <br />
-          FE built with Vite + React before AI agents. <br />
-          What little BE there is: Firebase for voting. Cloudeflare for API workers.
-          <br />
-          Hand designed. Line-by-line hand written code/CSS. Hand written animations. <br />
-          Mainly missing: actually collecting the works for the projects through 20k archived files.
-          <br />
-          And yes: the logos/identities featured here that you'll see in a moment are designed by me.
-          <br />
-          For dev projects: browse through small public ones on <span>github.com/getdagnis</span> or get in touch.
-          <br />
-          Completely not a complete list. Could never be. Ask for more.
-          <br />
-          Oh, and there's an Easter Egg hidden if you try playing around with one of the arrows.
-          <br />
+          <ul className="wip-ul">
+            ⇝ Estimated completion: beyond human comprehension.
+            <br />
+            ⇝ A must have disclaimer these days: the front end was built with Vite and React—before AI agents
+            (2019–2024).
+            <br />
+            ⇝ What little back end there is uses Firebase for voting and Cloudflare Workers for API requests.
+            <br />
+            ⇝ Designed by hand. Code and CSS written line by line. Animations built from scratch.
+            <br />
+            ⇝ What’s mainly missing? Finding and collecting the relevant work from more than 20,000 archived files made
+            over a span of 20+ years. Never gonna happen.
+            <br />
+            ⇝ And yes—the logos and visual identities you’re about to see were designed by me.
+            <br />⇝ For development work, browse a few smaller public projects at <span>github.com/getdagnis</span>, or
+            get in touch.
+            <br />
+            ⇝ This is not a complete list. It could never be. Ask for more.
+            <br />
+            ⇝ Oh, and there’s an Easter egg hidden somewhere. Try playing around with one of the arrows.
+            <br />
+          </ul>
           <div className="wip-buttons">
-            <NavLink className="modal-button" to="/redirect/design">
+            <a className="modal-button" href="/redirect/design">
               OK
-            </NavLink>
-            <NavLink className="modal-button" to="/redirect/design">
+            </a>
+            <a className="modal-button" href="/redirect/design">
               PERFECT!
-            </NavLink>
+            </a>
           </div>
         </div>
       </div>
