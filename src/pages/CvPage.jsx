@@ -101,7 +101,7 @@ export default function CvPage() {
                 </a>{' '}
                 (4+ million customers). Worked in a team that builds, upgrades from legacy and maintains their entire
                 claim and policy workflows — Sapiens Backend and 3rd-party services heavy schema-driven forms. Used,
-                updated and maintained a shared UI components library between us and the customer's web-dev team{' '}
+                updated and maintained a shared UI components library between us and the customer&apos;s web-dev team{' '}
                 <strong className="rainbow">(1.5 million monthly&nbsp;users*)</strong>{' '}
                 <span className="extra-small">* GPT told me to really emphasise this</span>
               </p>
@@ -170,7 +170,7 @@ export default function CvPage() {
                 <strong>10+ years: Creative Director & Art Director for agencies in Riga and London</strong>
                 <br />
                 During my time in advertising I worked on creating such Top 10 locally loved brands in Latvia (created
-                logos, identity and brand communication) as Dinamo Riga (reached "most beloved" brand Top 3 in first
+                logos, identity and brand communication) as Dinamo Riga (reached &quot;most beloved&quot; brand Top 3 in first
                 years after launch), Positivus Festival (reached Top 10) and Zelta Zivtiņa (TELE2, brand-refresh under
                 DDB Latvia, reached #1 most beloved brand in Latvia after re-fresh) among many others. International
                 clients have included Nokia, Coca-Cola, NASDAQ, DnB Nord (all GREY), TELE2, Volkswagen, Swedbank (all
@@ -198,30 +198,30 @@ export default function CvPage() {
               </p>
 
               <p>
-                <strong>VFX artist for feature film "Defenders of Riga"</strong>
+                <strong>VFX artist for feature film &quot;Defenders of Riga&quot;</strong>
                 <br />
                 After school I briefly worked in a small team of 3D VFX artists for a 2 million dollar budget feature
-                film "Defenders of Riga". Mostly as a texture artist, lighting artist, animator, matte painter.
+                film &quot;Defenders of Riga&quot;. Mostly as a texture artist, lighting artist, animator, matte painter.
               </p>
 
               <p>
-                <strong>Satori.lv — a platform for critical thought, literature and philosophy</strong>
+                <strong>Satori.lv — a platform for critical thought, literature and philosophy</strong>
                 <br />
                 Between 2001—2003, while still in highschool, I founded, developed and launched{' '}
                 <a href="https://satori.lv" target="_blank">
                   satori.lv
                 </a>{' '}
-                — then a platform to unite like-minded people interested in world class literature, philosophy and
+                — then a platform to unite like-minded people interested in world class literature, philosophy and
                 critical thought in general. It quickly became known due to lack of such projects at the time, is still
                 running 24 years later and is currently the #1 culture related non-publically financed internet media in
                 Latvia.
               </p>
 
               <p>
-                <strong>First steps — PC assambler, web development</strong>
+                <strong>First steps — PC assambler, web development</strong>
                 <br />
                 My first summer job during school in late 90s was as a PC assambler in a Riga-based IT store
-                — assambling of custom built PCs, installing bios, OS, drivers, servicing old ones etc. Around that time
+                — assambling of custom built PCs, installing bios, OS, drivers, servicing old ones etc. Around that time
                 I also started freelancing as a web developer.
               </p>
             </div>

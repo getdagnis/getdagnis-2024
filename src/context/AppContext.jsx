@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const AppContext = createContext();
 
@@ -9,4 +10,8 @@ export const AppProvider = ({ children }) => {
   const toggleDarkMode = () => setIsDarkMode((prevMode) => !prevMode);
 
   return <AppContext.Provider value={{ isDarkMode, toggleDarkMode, user, setUser }}>{children}</AppContext.Provider>;
+};
+
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

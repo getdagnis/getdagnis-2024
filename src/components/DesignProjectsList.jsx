@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import PROJECTS from '../constants/projects.json';
 import './DesignProjectsList.css';
@@ -36,3 +37,7 @@ function DesignProjectsList({ currentProject }) {
 }
 
 export default DesignProjectsList;
+
+DesignProjectsList.propTypes = {
+  currentProject: PropTypes.string.isRequired,
+};

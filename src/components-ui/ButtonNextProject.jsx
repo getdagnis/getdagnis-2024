@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './ButtonNextProject.css';
 
 export default function ButtonNextProject({ children, onClick, side = 'right' }) {
@@ -9,3 +11,9 @@ export default function ButtonNextProject({ children, onClick, side = 'right' })
     </button>
   );
 }
+
+ButtonNextProject.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  side: PropTypes.oneOf(['left', 'right']),
+};

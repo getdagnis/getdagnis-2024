@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ function ContactForm() {
     }
   }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     localStorage.setItem('email', email);
     localStorage.setItem('message', message);
 
@@ -47,7 +47,7 @@ function ContactForm() {
     setTimeout(() => {
       navigate({ pathname: `/design` });
     }, 100);
-  };
+  }, [email, message, navigate]);
 
   // Handle form submission success
   useEffect(() => {
@@ -88,7 +88,7 @@ function ContactForm() {
       document.removeEventListener('keydown', handleEscape);
       document.removeEventListener('dblclick', handleDoubleClick);
     };
-  }, []);
+  }, [handleClose]);
 
   if (state.succeeded) {
     return (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './MobileMenu.css';
 
@@ -52,3 +53,7 @@ function MobileMenu({ onClose }) {
 }
 
 export default MobileMenu;
+
+MobileMenu.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};

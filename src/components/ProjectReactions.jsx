@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { db } from '../../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
@@ -134,3 +135,7 @@ const ProjectReactions = ({ projectKey }) => {
   );
 };
 export default ProjectReactions;
+
+ProjectReactions.propTypes = {
+  projectKey: PropTypes.string.isRequired,
+};

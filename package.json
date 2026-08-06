@@ -1,5 +1,5 @@
 {
-  "name": "2020_v2_vite",
+  "name": "getdagnis_2024",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -14,6 +14,7 @@
     "@supabase/supabase-js": "^2.42.5",
     "cross-fetch": "^4.1.0",
     "firebase": "^10.13.1",
+    "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.0",

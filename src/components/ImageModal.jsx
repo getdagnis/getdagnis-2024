@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function ImageModal({ imageSrc, onClose }) {
   const position = { x: 0, y: 0 };
   const isMobile = window.innerWidth < 1024;
@@ -30,3 +32,8 @@ function ImageModal({ imageSrc, onClose }) {
 }
 
 export default ImageModal;
+
+ImageModal.propTypes = {
+  imageSrc: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};

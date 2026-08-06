@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ReactGA from 'react-ga4';
 
 import { AppProvider } from './context/AppContext';
@@ -28,5 +29,9 @@ function App({ children }) {
     </AppProvider>
   );
 }
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default App;

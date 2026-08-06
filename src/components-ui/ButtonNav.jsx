@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './ButtonNav.css';
 
 export default function ButtonNav({ children, float = 'right' }) {
@@ -7,3 +9,8 @@ export default function ButtonNav({ children, float = 'right' }) {
     </div>
   );
 }
+
+ButtonNav.propTypes = {
+  children: PropTypes.node.isRequired,
+  float: PropTypes.string,
+};
