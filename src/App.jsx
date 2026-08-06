@@ -4,6 +4,7 @@ import ReactGA from 'react-ga4';
 import { AppProvider } from './context/AppContext';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import SEO from './components/SEO';
 import './App.css';
 
 // Google Analytics
@@ -18,6 +19,7 @@ function App({ children }) {
 
   return (
     <AppProvider>
+      <SEO />
       <div id="site-container">
         <Header />
         <div id="site-content">{children}</div>

@@ -4,6 +4,13 @@ import './WipPage.css';
 function WipPage() {
   return (
     <>
+      <div className="seo-intro">
+        <h1>Dagnis Skurbe — Dev &amp; Design Portfolio</h1>
+        <p>
+          Showcase of works by Dagnis Skurbe, a Latvian product engineer, designer, creative director and founder.
+          Browse branding, visual identity, web development, UX and product projects.
+        </p>
+      </div>
       <DesignPage />
       <div className="wip">
         <div className="wip-message">
