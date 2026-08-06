@@ -2,8 +2,6 @@
 // This vanilla JS code was originally written by me in 2019 for the v1 of this site:
 // https://getdagnis.github.io/2020/public/
 
-let gridContainerFound = false; // Flag to track if #grid-container has been observed
-
 const launchGridWalker = () => {
   const gridItems = document.querySelectorAll('.grid-item');
   let hoverCol = 0;
@@ -108,7 +106,7 @@ const launchGridWalker = () => {
   }
 };
 
-function handleDOMChanges(mutationsList, observer) {
+function handleDOMChanges(mutationsList) {
   mutationsList.forEach((mutation) => {
     // Check if #grid-container is added or removed
     if (mutation.type === 'childList') {

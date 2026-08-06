@@ -3,7 +3,6 @@ import { Link, ScrollRestoration, useParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import ImageModal from '../components/ImageModal';
 import PropTypes from 'prop-types';
-import { isMobile } from 'react-device-detect';
 
 import DesignProjectsList from '../components/DesignProjectsList';
 import ProjectReactions from '../components/ProjectReactions';
@@ -132,7 +131,6 @@ function DesignProjectPage() {
           gridRow: `span ${rowSpan}`,
         }}
         onClick={handleClick}
-        onMouseEnter={() => setShowColor(true)}
       />
     );
   });

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { formatAIResponse } from './AboutPage';
+import { formatAIResponse } from '../utils/formatAIResponse';
 
 import './SharedPage.css';
 

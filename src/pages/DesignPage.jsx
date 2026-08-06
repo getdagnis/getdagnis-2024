@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import PROJECTS from '../constants/projects.json';
@@ -94,7 +94,7 @@ function DesignPage() {
       };
     });
     setGridItems(filteredItems);
-  }, [activeFilter, screenWidth, isHiding]);
+  }, [activeFilter, columns, screenWidth, isHiding]);
 
   const handleFilterChange = (newFilter) => {
     if (activeFilter !== newFilter) {

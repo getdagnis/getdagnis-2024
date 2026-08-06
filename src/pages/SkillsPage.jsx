@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import DevTimeline from '../components/DevTimeline';
@@ -75,20 +75,20 @@ function renderSkill(skill, index) {
       <div id="skill-item-bottom">
         <h3>
           {skill.title.split(' //').map((part, index, array) => (
-            <>
+            <Fragment key={`${skill.key}-title-${index}`}>
               {part}
               {index < array.length - 1 && (
                 <span style={{ opacity: 0.25, marginLeft: '0.175rem', fontWeight: 300 }}>/</span>
               )}
-            </>
+            </Fragment>
           ))}
         </h3>
         <p>
           {skill.describe.split(' //').map((part, index, array) => (
-            <>
+            <Fragment key={`${skill.key}-description-${index}`}>
               {part}
               {index < array.length - 1 && <span style={{ opacity: 0.25, marginLeft: '0.175rem' }}>/</span>}
-            </>
+            </Fragment>
           ))}
         </p>
       </div>

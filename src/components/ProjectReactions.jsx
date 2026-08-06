@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase';
-import { doc, getDoc, updateDoc, increment } from 'firebase/firestore'; // Import Firestore update functions
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 import './ProjectReactions.css';
 import smartImg from '@assets/react-icons/react_smart.svg';

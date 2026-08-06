@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import PROJECTS from '../constants/projects.json';
@@ -12,7 +11,7 @@ function DesignProjectsList({ currentProject }) {
     <div id="project-list">
       <div id="project-list-container">
         {projects.map(
-          (item, index) =>
+          (item) =>
             item.show === true && (
               <Link
                 to={`/design/project/${item.key}`}

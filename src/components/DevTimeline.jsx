@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { TIMELINE } from '../constants/constants';
 import './DevTimeline.css';
@@ -12,8 +12,6 @@ const DevTimeline = () => {
     setActiveYear(id);
   };
 
-  console.log('🍌🥕 outgoing', outgoing);
-
   return (
     <div className="timeline-container">
       <h1 className="timeline-title">Dev Experience Timeline</h1>
@@ -21,9 +19,8 @@ const DevTimeline = () => {
 
       <ul className="timeline">
         {TIMELINE.map((item) => (
-          <div className={`timeline-outer ${item.id === activeEntry ? 'active' : ''}`}>
+          <div key={item.id} className={`timeline-outer ${item.id === activeEntry ? 'active' : ''}`}>
             <li
-              key={item.id}
               id={item.id}
               className={`timeline-item ${item.id === activeEntry ? 'active' : ''}`}
               onClick={() => handleYearClick(item.id)}

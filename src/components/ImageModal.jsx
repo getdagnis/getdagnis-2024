@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-
 function ImageModal({ imageSrc, onClose }) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const position = { x: 0, y: 0 };
   const isMobile = window.innerWidth < 1024;
 
   return (

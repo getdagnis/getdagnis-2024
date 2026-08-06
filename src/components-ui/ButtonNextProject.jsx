@@ -1,4 +1,3 @@
-import React from 'react';
 import './ButtonNextProject.css';
 
 export default function ButtonNextProject({ children, onClick, side = 'right' }) {

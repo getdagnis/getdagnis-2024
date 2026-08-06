@@ -1,4 +1,3 @@
-import React from 'react';
 import './ButtonNav.css';
 
 export default function ButtonNav({ children, float = 'right' }) {
