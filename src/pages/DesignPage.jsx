@@ -12,6 +12,7 @@ function DesignPage() {
   const [activeFilter, setActiveFilter] = useState(sessionStorage.getItem('activefilter') || 'all');
   const [seeFilters, setSeeFilters] = useState(activeFilter !== 'all');
   const [isHiding, setIsHiding] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -116,7 +117,15 @@ function DesignPage() {
   const handleFiltersToggle = () => {
     setActiveFilter('all');
     sessionStorage.setItem('activefilter', 'all');
+    setShowInfo(false);
     setSeeFilters(!seeFilters);
+  };
+
+  const handleInfoToggle = () => {
+    if (seeFilters) {
+      setSeeFilters(false);
+    }
+    setShowInfo(!showInfo);
   };
 
   const getThumbInfoInitialClass = (col, row) => {
@@ -164,6 +173,31 @@ function DesignPage() {
               )
           )}
         </ul>
+        {!seeFilters && (
+          <button
+            type="button"
+            className="what-is-this"
+            aria-expanded={showInfo}
+            aria-controls="design-info-panel"
+            onClick={handleInfoToggle}
+          >
+            what is this?
+          </button>
+        )}
+      </div>
+      <div
+        className={`design-info-panel-wrapper${showInfo ? ' info-panel-shown' : ''}`}
+        aria-hidden={!showInfo}
+      >
+        <section id="design-info-panel" className="design-info-panel" aria-label="About this design portfolio">
+          <h2>what is this?</h2>
+          <p>
+            this is a selection of my design work: logos and visual identities, websites, apps, products, publishing,
+            and graphic design. It includes client work, collaborations, and projects I founded. Use the filters to
+            browse by type. Yearbook Machine is the exception: I redesigned its overall look, but did not create its
+            logo.
+          </p>
+        </section>
       </div>
       <div id="grid-container" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
         {/* Render grid items */}

@@ -17,6 +17,7 @@
 
 #grid-container {
   display: grid;
+  margin-top: 8px;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 8px;
   user-select: none;
@@ -75,7 +76,9 @@
   line-height: 1.2;
   font-weight: 400;
   border: var(--itemBorder);
-  transition: transform 0.5s ease, opacity 0.01s ease;
+  transition:
+    transform 0.5s ease,
+    opacity 0.01s ease;
 
   @media screen and (max-width: 800px) {
     display: none;
@@ -134,9 +137,10 @@
 }
 
 .portfolio-filters {
+  position: relative;
   text-align: left;
-  margin-bottom: 0.5rem;
-  height: 24px;
+  margin-bottom: 0.25rem;
+  height: 1.5rem;
   overflow: hidden;
 }
 
@@ -225,6 +229,97 @@
 .filters-shown > .filters-list {
   transform: translateY(-26px);
   transition: transform 0.5s ease;
+}
+
+.what-is-this {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 0.25rem;
+  border: 0;
+  color: var(--colorGrey6);
+  background: transparent;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+}
+
+.what-is-this:hover,
+.what-is-this:focus-visible {
+  color: var(--colorGrey8);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.1rem;
+}
+
+.design-info-panel-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease;
+}
+
+.design-info-panel-wrapper.info-panel-shown {
+  height: var(--gridItemHeight);
+}
+
+.design-info-panel {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+  height: var(--gridItemHeight);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--gridItem);
+  color: var(--colorGrey7);
+  overflow: hidden;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+}
+
+.design-info-panel h2 {
+  align-self: flex-start;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.info-panel-shown .design-info-panel {
+  transform: translateY(0);
+}
+
+.design-info-panel p {
+  max-width: 54rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 680px) {
+  .design-info-panel-wrapper.info-panel-shown {
+    height: calc(var(--gridItemHeight) * 1.75);
+  }
+
+  .design-info-panel {
+    height: auto;
+    min-height: calc(var(--gridItemHeight) * 1.75);
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .design-info-panel-wrapper.info-panel-shown {
+    height: 18rem;
+  }
+
+  .design-info-panel {
+    height: 18rem;
+    min-height: 18rem;
+    padding: 1.25rem;
+  }
 }
 
 #grid-container .itemBounceAnim {
