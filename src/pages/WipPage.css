@@ -2,15 +2,20 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: left;
-  height: 100vh;
-  max-height: 100dvh;
+  height: 100dvh;
+  min-height: 0;
   box-sizing: border-box;
   width: 100%;
   top: 0;
   left: 0;
+  padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
   background: var(--greyOpaque1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -18,6 +23,10 @@
   translate: 0 -100vh;
   animation: dammitAnimation 0.7s ease-in forwards;
   user-select: none;
+}
+
+.wip::-webkit-scrollbar {
+  display: none;
 }
 
 ul.wip-ul {
@@ -40,10 +49,27 @@ ul.wip-ul {
 
 .wip-message {
   text-align: left;
-  max-width: fit-content;
+  width: min(60rem, 100%);
+  max-width: 100%;
+  margin: auto 0;
+  flex: 0 0 auto;
   background: #ffffff44;
   padding: 2rem 3rem;
   border-radius: var(--radius);
+}
+
+@media (max-width: 680px) {
+  .wip {
+    padding: 0.75rem;
+  }
+
+  .wip-message {
+    padding: 1.25rem;
+  }
+
+  .modal-extra-h1 {
+    font-size: 2rem;
+  }
 }
 
 .wip-message h1 {
