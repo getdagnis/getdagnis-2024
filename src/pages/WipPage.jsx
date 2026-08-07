@@ -10,6 +10,7 @@ const WIP_ACKNOWLEDGED_KEY = 'wip-modal-acknowledged';
 
 function WipPage() {
   const location = useLocation();
+  const [gridAnimationRun, setGridAnimationRun] = useState(0);
   const [showWipModal, setShowWipModal] = useState(
     () => SHOW_WIP_MODAL && location.pathname === '/' && sessionStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
   );
@@ -20,6 +21,7 @@ function WipPage() {
     submitTeamVote(vote).catch(() => {
       // Keep the local reveal even when the Worker is unavailable.
     });
+    setGridAnimationRun((currentRun) => currentRun + 1);
     setShowWipModal(false);
   };
 
@@ -32,7 +34,7 @@ function WipPage() {
           Browse branding, visual identity, web development, UX and product projects.
         </p>
       </div>
-      <DesignPage />
+      <DesignPage gridAnimationRun={gridAnimationRun} />
       {showWipModal && (
         <div className="wip">
           <div className="wip-message">

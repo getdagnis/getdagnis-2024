@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import PROJECTS from '../constants/projects.json';
@@ -13,11 +14,10 @@ const PANEL = {
 };
 const PANEL_ANIMATION_MS = 1000;
 const PANEL_SWITCH_PAUSE_MS = 50;
-const TEAM_VOTE_DUMMY_COUNTS = { ok: 12, perfect: 3 };
 const TEAM_VOTE_BAR_INCREMENT = 0.5;
 const TEAM_VOTE_SESSION_KEY = 'team-vote';
 
-function DesignPage() {
+function DesignPage({ gridAnimationRun = 0 }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [gridItems, setGridItems] = useState([]);
   const [activeFilter, setActiveFilter] = useState(sessionStorage.getItem('activefilter') || 'all');
@@ -26,7 +26,7 @@ function DesignPage() {
   const [activePanel, setActivePanel] = useState(null);
   const [renderedPanel, setRenderedPanel] = useState(null);
   const [openRecruiterQuestions, setOpenRecruiterQuestions] = useState({ professional: true });
-  const [teamVoteCounts, setTeamVoteCounts] = useState(TEAM_VOTE_DUMMY_COUNTS);
+  const [teamVoteCounts, setTeamVoteCounts] = useState({ ok: 0, perfect: 0 });
   const [teamVote, setTeamVote] = useState(() => sessionStorage.getItem(TEAM_VOTE_SESSION_KEY) || null);
   const panelSwitchTimeout = useRef(null);
 
@@ -43,9 +43,9 @@ function DesignPage() {
           perfect: Number(data.perfect) || 0,
         });
         setTeamVote((currentVote) => currentVote || data.userVote || null);
-      })
+    })
       .catch(() => {
-        // Keep the small dummy dataset visible until the Worker endpoint is deployed.
+        // Keep zero counts visible when the Worker is unavailable.
       });
 
     return () => {
@@ -325,22 +325,26 @@ function DesignPage() {
               <div className="team-vote-row">
                 <span>Team OK{teamVote === 'ok' ? ' (you)' : ''}</span>
                 <div className="team-vote-bar-line">
-                  <span
-                    className="team-vote-bar team-vote-bar-ok"
-                    style={{ width: `${teamVoteCounts.ok * TEAM_VOTE_BAR_INCREMENT}rem` }}
-                    aria-hidden="true"
-                  ></span>
+                  {teamVoteCounts.ok > 0 && (
+                    <span
+                      className="team-vote-bar team-vote-bar-ok"
+                      style={{ width: `${teamVoteCounts.ok * TEAM_VOTE_BAR_INCREMENT}rem` }}
+                      aria-hidden="true"
+                    ></span>
+                  )}
                   <span className="team-vote-count team-vote-count-ok">{teamVoteCounts.ok}</span>
                 </div>
               </div>
               <div className="team-vote-row">
                 <span>Team PERFECT!{teamVote === 'perfect' ? ' (you, great!)' : ''}</span>
                 <div className="team-vote-bar-line">
-                  <span
-                    className="team-vote-bar team-vote-bar-perfect"
-                    style={{ width: `${teamVoteCounts.perfect * TEAM_VOTE_BAR_INCREMENT}rem` }}
-                    aria-hidden="true"
-                  ></span>
+                  {teamVoteCounts.perfect > 0 && (
+                    <span
+                      className="team-vote-bar team-vote-bar-perfect"
+                      style={{ width: `${teamVoteCounts.perfect * TEAM_VOTE_BAR_INCREMENT}rem` }}
+                      aria-hidden="true"
+                    ></span>
+                  )}
                   <span className="team-vote-count team-vote-count-perfect">{teamVoteCounts.perfect}</span>
                 </div>
               </div>
@@ -511,7 +515,7 @@ function DesignPage() {
         {gridItems.map((item, index) => (
           <Link
             to={`/design/project/${item.key}`}
-            key={item.key}
+            key={`${item.key}-${gridAnimationRun}`}
             className={`${item.className} ${isHiding ? 'itemHideAnim armageddon ' : 'armageddon'}`}
             style={{
               backgroundImage: `url(../../thumbs/${item.key}.svg)`,
@@ -531,5 +535,9 @@ function DesignPage() {
     </div>
   );
 }
+
+DesignPage.propTypes = {
+  gridAnimationRun: PropTypes.number,
+};
 
 export default DesignPage;
