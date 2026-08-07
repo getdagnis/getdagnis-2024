@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PROJECTS from '../constants/projects.json';
 import { DESIGN_FILTERS } from '../constants/constants';
 import { SCREEN_WIDTHS as SCREEN } from '../constants/constants';
+import { getTeamVotes, TEAM_VOTE_EVENT } from '../utils/teamVotes';
 import './DesignPage.css';
 
 const PANEL = {
@@ -12,6 +13,8 @@ const PANEL = {
 };
 const PANEL_ANIMATION_MS = 1000;
 const PANEL_SWITCH_PAUSE_MS = 50;
+const TEAM_VOTE_DUMMY_COUNTS = { ok: 12, perfect: 3 };
+const TEAM_VOTE_BAR_INCREMENT = 0.5;
 
 function DesignPage() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -22,9 +25,48 @@ function DesignPage() {
   const [activePanel, setActivePanel] = useState(null);
   const [renderedPanel, setRenderedPanel] = useState(null);
   const [openRecruiterQuestions, setOpenRecruiterQuestions] = useState({ professional: true });
+  const [teamVoteCounts, setTeamVoteCounts] = useState(TEAM_VOTE_DUMMY_COUNTS);
+  const [teamVote, setTeamVote] = useState(null);
   const panelSwitchTimeout = useRef(null);
 
   useEffect(() => () => window.clearTimeout(panelSwitchTimeout.current), []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getTeamVotes()
+      .then((data) => {
+        if (cancelled) return;
+        setTeamVoteCounts({
+          ok: Number(data.ok) || 0,
+          perfect: Number(data.perfect) || 0,
+        });
+        setTeamVote(data.userVote || null);
+      })
+      .catch(() => {
+        // Keep the small dummy dataset visible until the Worker endpoint is deployed.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleTeamVote = (event) => {
+      const vote = event.detail?.vote;
+      if (vote !== 'ok' && vote !== 'perfect') return;
+
+      setTeamVote(vote);
+      setTeamVoteCounts((currentCounts) => ({
+        ...currentCounts,
+        [vote]: currentCounts[vote] + 1,
+      }));
+    };
+
+    window.addEventListener(TEAM_VOTE_EVENT, handleTeamVote);
+    return () => window.removeEventListener(TEAM_VOTE_EVENT, handleTeamVote);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -269,11 +311,36 @@ function DesignPage() {
               or get in touch. And try the arrows. Not telling you which arrows. One of them does something it
               shouldn’t.
             </p>
+            <p>Btw, in case you wondered what the Work In Progress modal buttons do :)</p>
+            <div className="team-vote-preview" aria-label="Team rating preview">
+              <div className="team-vote-row">
+                <span>Team OK{teamVote === 'ok' ? ' (you and the other classy ones)' : ''}</span>
+                <div className="team-vote-bar-line">
+                  <span
+                    className="team-vote-bar team-vote-bar-ok"
+                    style={{ width: `${teamVoteCounts.ok * TEAM_VOTE_BAR_INCREMENT}rem` }}
+                    aria-hidden="true"
+                  ></span>
+                  <span className="team-vote-count team-vote-count-ok">{teamVoteCounts.ok}</span>
+                </div>
+              </div>
+              <div className="team-vote-row">
+                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you too, great!)' : ''}</span>
+                <div className="team-vote-bar-line">
+                  <span
+                    className="team-vote-bar team-vote-bar-perfect"
+                    style={{ width: `${teamVoteCounts.perfect * TEAM_VOTE_BAR_INCREMENT}rem` }}
+                    aria-hidden="true"
+                  ></span>
+                  <span className="team-vote-count team-vote-count-perfect">{teamVoteCounts.perfect}</span>
+                </div>
+              </div>
+            </div>
           </section>
         )}
         {renderedPanel === PANEL.RECRUITERS && (
           <section id="recruiters-panel" className="design-info-panel" aria-label="Information for recruiters">
-            <h2>recruiters</h2>
+            <h2>For Recruiters</h2>
             <div className="recruiter-qa">
               <div className="recruiter-question">
                 <button

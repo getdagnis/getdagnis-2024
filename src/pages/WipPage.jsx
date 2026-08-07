@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import DesignPage from './DesignPage';
+import { submitTeamVote, TEAM_VOTE_EVENT } from '../utils/teamVotes';
 import './WipPage.css';
 
 const SHOW_WIP_MODAL = true;
@@ -13,8 +14,12 @@ function WipPage() {
     () => SHOW_WIP_MODAL && location.pathname === '/' && sessionStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
   );
 
-  const handleWipAcknowledgement = () => {
+  const handleWipAcknowledgement = (vote) => {
     sessionStorage.setItem(WIP_ACKNOWLEDGED_KEY, 'true');
+    window.dispatchEvent(new CustomEvent(TEAM_VOTE_EVENT, { detail: { vote } }));
+    submitTeamVote(vote).catch(() => {
+      // Keep the local reveal even when the Worker is unavailable.
+    });
     setShowWipModal(false);
   };
 
@@ -49,10 +54,10 @@ function WipPage() {
               <br />
             </ul>
             <div className="wip-buttons">
-              <button type="button" className="modal-button" onClick={handleWipAcknowledgement}>
+              <button type="button" className="modal-button" onClick={() => handleWipAcknowledgement('ok')}>
                 OK
               </button>
-              <button type="button" className="modal-button" onClick={handleWipAcknowledgement}>
+              <button type="button" className="modal-button" onClick={() => handleWipAcknowledgement('perfect')}>
                 PERFECT!
               </button>
             </div>

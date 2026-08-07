@@ -416,6 +416,67 @@
   opacity: 1;
 }
 
+.team-vote-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.team-vote-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+}
+
+.team-vote-bar-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0.75rem;
+  gap: 0.25rem;
+}
+
+.team-vote-bar {
+  display: block;
+  flex: 0 0 auto;
+  width: 0;
+  max-width: 100%;
+  height: 0.25rem;
+  transition: width 0.35s ease;
+}
+
+.team-vote-count {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.team-vote-bar-ok {
+  background: var(--colorGrey4);
+}
+
+.team-vote-count-ok {
+  color: var(--colorGrey4);
+}
+
+.team-vote-bar-perfect {
+  background: var(--walker);
+}
+
+.team-vote-count-perfect {
+  color: var(--walker);
+}
+
 .recruiter-links {
   display: flex;
   width: fit-content;
