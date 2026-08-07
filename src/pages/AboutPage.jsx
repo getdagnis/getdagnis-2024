@@ -90,18 +90,17 @@ function AboutPage() {
   };
 
   const handleShare = async () => {
-    setSharingStatus(true);
+    setSharingStatus('sharing');
     const { success } = await shareContent(response, absurdity);
 
     if (success) {
       setSharingStatus('done');
-      alert('Shared successfully! Redirecting to shared page...');
-      setTimeout(() => navigate('/shared'), 3000);
+      setTimeout(() => navigate('/shared'), 2000);
       // TODO: remove this when a modal confirmation for sharing is added and put it there with no timer
-      setTimeout(() => setSharingStatus(false), 3000);
+      setTimeout(() => setSharingStatus(false), 2000);
     } else {
       setSharingStatus('error');
-      setTimeout(() => setSharingStatus(false), 3000);
+      setTimeout(() => setSharingStatus(false), 2000);
     }
   };
 
@@ -118,8 +117,8 @@ function AboutPage() {
           utcNow.getUTCDate() + 1, // tomorrow
           0,
           0,
-          0
-        )
+          0,
+        ),
       );
 
       const diff = nextMidnight.getTime() - utcNow.getTime();
@@ -149,13 +148,15 @@ function AboutPage() {
             {loading && <LoadingStatus />}
             {sharingStatus && (
               <p>
-                {sharingStatus === 'done'
-                  ? 'Shared successfully!'
-                  : (
-                    <>
-                      Failed to share. Please <span onClick={() => window.location.reload()}>reload</span> the page.
-                    </>
-                  )}
+                {sharingStatus === 'sharing' ? (
+                  'Sharing...'
+                ) : sharingStatus === 'done' ? (
+                  'Shared successfully!'
+                ) : (
+                  <>
+                    Failed to share. Please <span onClick={() => window.location.reload()}>reload</span> the page.
+                  </>
+                )}
               </p>
             )}
             {!loading && !response && !failed && !sharingStatus && (
