@@ -1,5 +1,11 @@
+import { getVisitorId, isLocalhost } from './teamVotes';
+
 export const shareContent = async (content, absurdity) => {
   try {
+    if (isLocalhost()) {
+      return { success: false, error: 'Sharing is disabled on localhost.' };
+    }
+
     const res = await fetch('https://getdagnis-worker-prod.getdagnis.workers.dev/share', {
       method: 'POST',
       headers: {
@@ -8,13 +14,16 @@ export const shareContent = async (content, absurdity) => {
       body: JSON.stringify({
         content,
         absurdity,
+        visitorId: getVisitorId(),
       }),
     });
 
     const json = await res.json();
-    return json;
+    return json.success
+      ? json
+      : { success: false, error: json.error || 'The Worker rejected the share.' };
   } catch (err) {
     console.error('Share failed:', err);
-    return { success: false };
+    return { success: false, error: err.message || 'The share request failed.' };
   }
 };

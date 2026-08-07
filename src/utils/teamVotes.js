@@ -4,11 +4,11 @@ export const TEAM_VOTE_STORAGE_KEY = 'team-vote';
 
 const LOCALHOST_HOSTNAMES = new Set(['localhost', '127.0.0.1', '[::1]', '::1']);
 
-function isLocalhost() {
+export function isLocalhost() {
   return typeof window !== 'undefined' && LOCALHOST_HOSTNAMES.has(window.location.hostname);
 }
 
-function getVisitorId() {
+export function getVisitorId() {
   const storedId = localStorage.getItem('team-vote-visitor-id');
   if (storedId) return storedId;
 

@@ -12,6 +12,7 @@
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@supabase/supabase-js": "^2.42.5",
+    "@vercel/analytics": "^2.0.1",
     "cross-fetch": "^4.1.0",
     "firebase": "^10.13.1",
     "prop-types": "^15.8.1",
