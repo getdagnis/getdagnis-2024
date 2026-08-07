@@ -314,7 +314,7 @@ function DesignPage() {
             <p>Btw, in case you wondered what the Work In Progress modal buttons do :)</p>
             <div className="team-vote-preview" aria-label="Team rating preview">
               <div className="team-vote-row">
-                <span>Team OK{teamVote === 'ok' ? ' (you and the other classy ones)' : ''}</span>
+                <span>Team OK{teamVote === 'ok' ? ' (you)' : ''}</span>
                 <div className="team-vote-bar-line">
                   <span
                     className="team-vote-bar team-vote-bar-ok"
@@ -325,7 +325,7 @@ function DesignPage() {
                 </div>
               </div>
               <div className="team-vote-row">
-                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you too, great!)' : ''}</span>
+                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you, great!)' : ''}</span>
                 <div className="team-vote-bar-line">
                   <span
                     className="team-vote-bar team-vote-bar-perfect"
