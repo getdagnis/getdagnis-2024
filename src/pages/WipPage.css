@@ -29,10 +29,31 @@
   display: none;
 }
 
+.wip.wip-closing {
+  animation: wip-dismiss 0.18s ease-in forwards;
+}
+
+@keyframes wip-dismiss {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -100vh;
+  }
+}
+
 ul.wip-ul {
   line-height: 1.5;
   width: 100%;
   max-width: 60rem;
+}
+
+.wip-copy {
+  line-height: 1.5;
+}
+
+.wip-copy p + p {
+  margin-top: 1rem;
 }
 
 .modal-extra-h1 {
@@ -65,6 +86,16 @@ ul.wip-ul {
 
   .wip-message {
     padding: 1.25rem;
+  }
+
+  .wip-buttons {
+    flex-wrap: wrap;
+  }
+
+  .modal-button {
+    flex: 1 1 10rem;
+    min-width: 0;
+    margin-top: 1.5rem;
   }
 
   .modal-extra-h1 {
@@ -114,6 +145,7 @@ ul.wip-ul {
 
 .modal-button {
   color: black;
+  font: inherit;
   font-weight: 600;
   width: fit-content;
   min-width: 12rem;

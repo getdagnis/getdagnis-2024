@@ -231,10 +231,17 @@
   transition: transform 0.5s ease;
 }
 
-.what-is-this {
+.info-panel-controls {
   position: absolute;
   top: 0;
   right: 0;
+  width: auto;
+  display: flex;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
+.panel-toggle {
   width: auto;
   padding: 0.25rem;
   border: 0;
@@ -248,31 +255,33 @@
   cursor: pointer;
 }
 
-.what-is-this:hover,
-.what-is-this:focus-visible {
+.panel-toggle:hover,
+.panel-toggle:focus-visible,
+.panel-toggle.active {
   color: var(--colorGrey8);
   text-decoration: line-through;
   text-decoration-thickness: 0.1rem;
 }
 
 .design-info-panel-wrapper {
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  transition: height 0.5s ease;
+  transition: max-height 0.5s ease;
 }
 
 .design-info-panel-wrapper.info-panel-shown {
-  height: var(--gridItemHeight);
+  max-height: 64rem;
 }
 
 .design-info-panel {
   display: flex;
-  align-items: left;
-  justify-content: left;
+  align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
   min-height: 0;
-  height: var(--gridItemHeight);
+  height: auto;
+  min-height: var(--gridItemHeight);
   padding: 1.5rem;
   border-radius: var(--radius);
   background: var(--gridItem);
@@ -298,26 +307,148 @@
   line-height: 1.5;
 }
 
-@media (max-width: 680px) {
-  .design-info-panel-wrapper.info-panel-shown {
-    height: calc(var(--gridItemHeight) * 1.75);
-  }
+.recruiter-qa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
 
+.recruiter-question {
+  width: 100%;
+}
+
+.recruiter-question-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.2rem 1.25rem 0.2rem 0;
+  border: 0;
+  color: var(--colorGrey7);
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.1px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.recruiter-question-toggle::after {
+  content: '⌄';
+  position: absolute;
+  top: 50%;
+  right: 0.15rem;
+  color: var(--colorGrey5);
+  font-size: 0.7rem;
+  font-weight: 400;
+  opacity: 0.65;
+  transform: translateY(-60%);
+  transition: transform 0.25s ease;
+}
+
+.recruiter-question-toggle[aria-expanded='true']::after {
+  transform: translateY(-40%) rotate(180deg);
+}
+
+.recruiter-question-toggle:hover,
+.recruiter-question-toggle:focus-visible {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.1rem;
+}
+
+.recruiter-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.recruiter-answer.open {
+  max-height: 40rem;
+}
+
+.design-info-panel .fake-link {
+  position: relative;
+  width: auto;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.design-info-panel .fake-link:hover,
+.design-info-panel .fake-link:focus-visible {
+  color: var(--accent);
+}
+
+.design-info-panel .fake-link::after {
+  content: 'This is not a real link. For now remain here! :)';
+  display: block;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  width: 10rem;
+  height: fit-content;
+  overflow: auto;
+  text-wrap: wrap;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: white;
+  background: var(--backgroundRed);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity 0.1s ease-in-out;
+}
+
+.design-info-panel .fake-link:hover::after,
+.design-info-panel .fake-link:focus-visible::after {
+  opacity: 1;
+}
+
+.recruiter-links {
+  display: flex;
+  width: fit-content;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.recruiter-links a {
+  color: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  width: fit-content;
+  text-transform: uppercase;
+  text-underline-offset: 0.15rem;
+}
+
+.recruiter-links a:hover,
+.recruiter-links a:focus-visible {
+  color: var(--accent);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.1rem;
+}
+
+@media (max-width: 680px) {
   .design-info-panel {
-    height: auto;
     min-height: calc(var(--gridItemHeight) * 1.75);
     padding: 1.5rem;
   }
 }
 
 @media (max-width: 420px) {
-  .design-info-panel-wrapper.info-panel-shown {
-    height: 18rem;
-  }
-
   .design-info-panel {
-    height: 18rem;
-    min-height: 18rem;
     padding: 1.25rem;
   }
 }
