@@ -10,7 +10,7 @@ const PANEL = {
   WHAT_IS_THIS: 'what-is-this',
   RECRUITERS: 'recruiters',
 };
-const PANEL_ANIMATION_MS = 500;
+const PANEL_ANIMATION_MS = 1000;
 const PANEL_SWITCH_PAUSE_MS = 50;
 
 function DesignPage() {
@@ -356,19 +356,60 @@ function DesignPage() {
                   id="recruiter-answer-practice"
                   className={`recruiter-answer${openRecruiterQuestions.practice ? ' open' : ''}`}
                 >
+                  <p>You are looking at one example.</p>
                   <p>
-                    You are looking at one example. Some more publically available examples can be found on my Github
-                    profile.
-                  </p>
-                  <p>
-                    This site was designed from scratch mainly between 2019–2024. Code and CSS written line by line,
-                    initial animation effects (such as the "red walking rectangle") as Vanilla JS. Animations built from
-                    scratch. Firebase handles voting. OpenRouter API calls run through Cloudflare Workers.
+                    This site was designed from scratch mainly between 2019–2024. Partly outdated but code and CSS was
+                    written line by line, initial animation effects (such as the &quot;red walking rectangle&quot;) as
+                    Vanilla JS. CSS animations hand written from scratch. Firebase handles voting. OpenRouter API calls
+                    run through Cloudflare Workers.
                   </p>
                   <p>
                     The original Vite + React build predates AI agents (2019–2024). But they make up a large part of my
                     work now: implementation, migrations, testing, debugging and review. I direct the work, inspect the
                     output and own what ships.
+                  </p>
+                </div>
+              </div>
+              <div className="recruiter-question">
+                <button
+                  type="button"
+                  className="recruiter-question-toggle"
+                  aria-expanded={Boolean(openRecruiterQuestions.roles)}
+                  aria-controls="recruiter-answer-roles"
+                  onClick={() => handleRecruiterQuestionToggle('roles')}
+                >
+                  what roles are you available for?
+                </button>
+                <div
+                  id="recruiter-answer-roles"
+                  className={`recruiter-answer${openRecruiterQuestions.roles ? ' open' : ''}`}
+                >
+                  <p>
+                    Senior React/Next.js (I like having hands dirty), Lead Frontend, Full-stack Developer and Technical
+                    Product Owner—all seem to be good fits. Head of Design—always. AI integrations lead—this would be a
+                    new one.
+                  </p>
+                </div>
+              </div>
+
+              <div className="recruiter-question">
+                <button
+                  type="button"
+                  className="recruiter-question-toggle"
+                  aria-expanded={Boolean(openRecruiterQuestions.status)}
+                  aria-controls="recruiter-answer-status"
+                  onClick={() => handleRecruiterQuestionToggle('status')}
+                >
+                  what is your current status?
+                </button>
+                <div
+                  id="recruiter-answer-status"
+                  className={`recruiter-answer${openRecruiterQuestions.status ? ' open' : ''}`}
+                >
+                  <p>
+                    Not committed to a long-term role at the time of writing, contact for status updates. Open to
+                    permanent or contract work, full-time or part-time, remote or hybrid Riga based. Relocation is on
+                    the table as well.
                   </p>
                 </div>
               </div>

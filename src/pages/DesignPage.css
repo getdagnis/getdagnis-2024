@@ -266,7 +266,7 @@
 .design-info-panel-wrapper {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  transition: max-height 1s ease;
 }
 
 .design-info-panel-wrapper.info-panel-shown {
@@ -288,7 +288,7 @@
   color: var(--colorGrey7);
   overflow: hidden;
   transform: translateY(-100%);
-  transition: transform 0.5s ease;
+  transition: transform 1s ease;
 }
 
 .design-info-panel h2 {
@@ -390,7 +390,7 @@
 }
 
 .design-info-panel .fake-link::after {
-  content: 'This is not a real link. For now remain here! :)';
+  content: 'This is not a link. For now remain here! :)';
   display: block;
   position: absolute;
   bottom: 120%;

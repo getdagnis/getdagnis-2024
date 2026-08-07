@@ -24,7 +24,7 @@ function MobileMenu({ onClose }) {
     <div id="mobile-menu-container">
       <ul id="mobile-menu-list">
         <li style={{ animationDelay: '0.25s' }}>
-          <NavLink to="/redirect/design" className={activeRoute === 'design' ? 'active' : ''} onClick={onClose}>
+          <NavLink to="/" className={activeRoute === 'design' ? 'active' : ''} onClick={onClose}>
             design
           </NavLink>
         </li>

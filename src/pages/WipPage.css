@@ -70,7 +70,7 @@ ul.wip-ul {
 
 .wip-message {
   text-align: left;
-  width: min(60rem, 100%);
+  width: min(50rem, 100%);
   max-width: 100%;
   margin: auto 0;
   flex: 0 0 auto;
@@ -140,7 +140,8 @@ ul.wip-ul {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem 1rem;
+  margin-top: 2rem;
 }
 
 .modal-button {
@@ -149,8 +150,7 @@ ul.wip-ul {
   font-weight: 600;
   width: fit-content;
   min-width: 12rem;
-  max-width: 90vw;
-  margin-top: 2.5rem;
+  max-width: fit-content;
   text-align: center;
   padding: 0.55rem 1.15rem;
   border: 2.25px solid black;
@@ -159,6 +159,18 @@ ul.wip-ul {
   transition: all 0.2s ease-in-out;
   background-color: rgba(256, 256, 256, 0.5);
   font-size: 1rem;
+}
+
+@media (max-width: 620px) {
+  .modal-button {
+    min-width: 10rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal-button {
+    min-width: 7rem;
+  }
 }
 
 .modal-button:hover {

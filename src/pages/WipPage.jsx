@@ -10,18 +10,12 @@ const WIP_ACKNOWLEDGED_KEY = 'wip-modal-acknowledged';
 function WipPage() {
   const location = useLocation();
   const [showWipModal, setShowWipModal] = useState(
-    () =>
-      SHOW_WIP_MODAL &&
-      location.pathname === '/' &&
-      sessionStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
+    () => SHOW_WIP_MODAL && location.pathname === '/' && sessionStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
   );
-  const [isClosing, setIsClosing] = useState(false);
 
   const handleWipAcknowledgement = () => {
-    if (isClosing) return;
     sessionStorage.setItem(WIP_ACKNOWLEDGED_KEY, 'true');
-    setIsClosing(true);
-    window.setTimeout(() => setShowWipModal(false), 180);
+    setShowWipModal(false);
   };
 
   return (
@@ -35,15 +29,31 @@ function WipPage() {
       </div>
       <DesignPage />
       {showWipModal && (
-        <div className={`wip${isClosing ? ' wip-closing' : ''}`}>
+        <div className="wip">
           <div className="wip-message">
             <h1 className="modal-extra-h1">WORK IN PROGRESS</h1>
-            <div className="wip-copy">
-              <p>Estimated completion: beyond human comprehension.</p>
-            </div>
+            <ul className="wip-ul">
+              ⇝ Estimated completion: beyond human comprehension.
+              <br />
+              ⇝ A must have disclaimer these days: the front end was built with Vite and React—before AI agents
+              (2019–2024).
+              <br />
+              ⇝ Designed by hand. Code and CSS written line by line. Animations built from scratch.
+              <br />
+              ⇝ What’s mainly missing? Finding and collecting the relevant work from more than 20,000 archived files
+              made over a span of 20+ years. Never gonna happen.
+              <br />
+              ⇝ Since people keep asking—yes the logos and visual identities you’re about to see were designed by me.
+              <br />
+              ⇝ Oh, and there are some Easter eggs hidden somewhere. Play around with the arrows.
+              <br />
+            </ul>
             <div className="wip-buttons">
               <button type="button" className="modal-button" onClick={handleWipAcknowledgement}>
-                ACKNOWLEDGED
+                OK
+              </button>
+              <button type="button" className="modal-button" onClick={handleWipAcknowledgement}>
+                PERFECT!
               </button>
             </div>
           </div>

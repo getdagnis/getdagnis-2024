@@ -184,14 +184,14 @@ function Header() {
   }
 
   const location = useLocation();
-  const designActive = location.pathname.includes('/design');
+  const designActive = location.pathname === '/' || location.pathname.includes('/design');
 
   return (
     <div id="header">
       {armageddon && <div className="overlay-block"></div>}
       <div className="header-top">
         <div className="header-left">
-          <NavLink to="/redirect/design">
+          <NavLink to="/">
             <div className="logo armageddon"></div>
           </NavLink>
           <p className="logo-subtitle armageddon">dev & design portfolio</p>
@@ -205,7 +205,7 @@ function Header() {
 
         <nav id="header-nav" className="armageddon">
           <ButtonNav>
-            <NavLink to="/design" className={designActive ? 'active' : ''}>
+            <NavLink to="/" className={designActive ? 'active' : ''}>
               design
             </NavLink>
           </ButtonNav>

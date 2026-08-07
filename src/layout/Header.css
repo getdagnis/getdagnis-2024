@@ -276,14 +276,6 @@ div #armageddon-btn {
   color: white;
 }
 
-.wip p {
-  background-color: rgba(256, 256, 256, 0.5);
-}
-
-.wip p:hover {
-  background-color: rgba(256, 256, 256, 1);
-}
-
 @media (max-width: 800px) {
   nav#header-nav {
     display: none;
