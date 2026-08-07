@@ -15,6 +15,7 @@ const PANEL_ANIMATION_MS = 1000;
 const PANEL_SWITCH_PAUSE_MS = 50;
 const TEAM_VOTE_DUMMY_COUNTS = { ok: 12, perfect: 3 };
 const TEAM_VOTE_BAR_INCREMENT = 0.5;
+const TEAM_VOTE_SESSION_KEY = 'team-vote';
 
 function DesignPage() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -26,7 +27,7 @@ function DesignPage() {
   const [renderedPanel, setRenderedPanel] = useState(null);
   const [openRecruiterQuestions, setOpenRecruiterQuestions] = useState({ professional: true });
   const [teamVoteCounts, setTeamVoteCounts] = useState(TEAM_VOTE_DUMMY_COUNTS);
-  const [teamVote, setTeamVote] = useState(null);
+  const [teamVote, setTeamVote] = useState(() => sessionStorage.getItem(TEAM_VOTE_SESSION_KEY) || null);
   const panelSwitchTimeout = useRef(null);
 
   useEffect(() => () => window.clearTimeout(panelSwitchTimeout.current), []);
@@ -41,7 +42,7 @@ function DesignPage() {
           ok: Number(data.ok) || 0,
           perfect: Number(data.perfect) || 0,
         });
-        setTeamVote(data.userVote || null);
+        setTeamVote((currentVote) => currentVote || data.userVote || null);
       })
       .catch(() => {
         // Keep the small dummy dataset visible until the Worker endpoint is deployed.
@@ -53,11 +54,19 @@ function DesignPage() {
   }, []);
 
   useEffect(() => {
+    const storedVote = sessionStorage.getItem(TEAM_VOTE_SESSION_KEY);
+    if (storedVote === 'ok' || storedVote === 'perfect') {
+      setTeamVote(storedVote);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleTeamVote = (event) => {
       const vote = event.detail?.vote;
       if (vote !== 'ok' && vote !== 'perfect') return;
 
       setTeamVote(vote);
+      sessionStorage.setItem(TEAM_VOTE_SESSION_KEY, vote);
       setTeamVoteCounts((currentCounts) => ({
         ...currentCounts,
         [vote]: currentCounts[vote] + 1,
