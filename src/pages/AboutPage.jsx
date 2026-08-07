@@ -13,7 +13,6 @@ function AboutPage() {
   const [absurdity, setAbsurdity] = useState(1);
   const [utcCountdown, setUtcCountdown] = useState('00:00:00');
   const [sharingStatus, setSharingStatus] = useState(false);
-  const [shareError, setShareError] = useState('');
 
   const navigate = useNavigate();
   const failed = response === 'Sorry. Cloudflare Worker request failed.';
@@ -92,8 +91,7 @@ function AboutPage() {
 
   const handleShare = async () => {
     setSharingStatus(true);
-    setShareError('');
-    const { success, error } = await shareContent(response, absurdity);
+    const { success } = await shareContent(response, absurdity);
 
     if (success) {
       setSharingStatus('done');
@@ -102,7 +100,6 @@ function AboutPage() {
       // TODO: remove this when a modal confirmation for sharing is added and put it there with no timer
       setTimeout(() => setSharingStatus(false), 3000);
     } else {
-      setShareError(error || 'The share request failed.');
       setSharingStatus('error');
       setTimeout(() => setSharingStatus(false), 3000);
     }
@@ -154,13 +151,11 @@ function AboutPage() {
               <p>
                 {sharingStatus === 'done'
                   ? 'Shared successfully!'
-                  : sharingStatus === 'error' && shareError === 'Sharing is disabled on localhost.'
-                    ? 'Sharing is disabled on localhost. Try the deployed site.'
-                    : (
-                      <>
-                        Failed to share. Please <span onClick={() => window.location.reload()}>reload</span> the page.
-                      </>
-                    )}
+                  : (
+                    <>
+                      Failed to share. Please <span onClick={() => window.location.reload()}>reload</span> the page.
+                    </>
+                  )}
               </p>
             )}
             {!loading && !response && !failed && !sharingStatus && (

@@ -1,11 +1,7 @@
-import { getVisitorId, isLocalhost } from './teamVotes';
+import { getVisitorId } from './teamVotes';
 
 export const shareContent = async (content, absurdity) => {
   try {
-    if (isLocalhost()) {
-      return { success: false, error: 'Sharing is disabled on localhost.' };
-    }
-
     const res = await fetch('https://getdagnis-worker-prod.getdagnis.workers.dev/share', {
       method: 'POST',
       headers: {
