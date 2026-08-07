@@ -11,6 +11,7 @@ function ContactForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const emailRef = useRef(null);
+  const emailIsValid = /^[A-Za-z0-9._-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}$/.test(email.trim());
 
   useEffect(() => {
     const loadValues = () => {
@@ -76,17 +77,11 @@ function ContactForm() {
       }
     };
 
-    const handleDoubleClick = () => {
-      handleClose();
-    };
-
     document.addEventListener('keydown', handleEscape);
-    document.addEventListener('dblclick', handleDoubleClick);
 
     return () => {
       document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('dblclick', handleDoubleClick);
     };
   }, [handleClose]);
 
@@ -125,13 +120,14 @@ function ContactForm() {
           ref={emailRef}
           style={{ animationDelay: '0.9s' }}
           type="email"
-          name="email"
-          placeholder="email"
+          name="_replyto"
+          placeholder="reply-to email"
+          pattern="[A-Za-z0-9._-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}"
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
         />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
+        <ValidationError prefix="Email" field="_replyto" errors={state.errors} />
         <textarea
           id="message"
           style={{ animationDelay: '1.2s' }}
@@ -144,9 +140,9 @@ function ContactForm() {
         <ValidationError prefix="Message" field="message" errors={state.errors} />
         <button
           className="modal-button"
-          style={{ opacity: message.length > 5 ? 1 : 0.5 }}
+          style={{ opacity: message.length > 5 && emailIsValid ? 1 : 0.5 }}
           type="submit"
-          disabled={state.submitting || message.length <= 5}
+          disabled={state.submitting || message.length <= 5 || !emailIsValid}
         >
           {state.submitting ? 'SENDING...' : 'SEND'}
         </button>

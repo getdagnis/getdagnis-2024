@@ -501,7 +501,7 @@ function DesignPage() {
               <a href="https://linkedin.com/in/getdagnis" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
-              <Link to="/contact">Quick Connect</Link>
+              <Link to="/contact">Quick Contact</Link>
             </div>
           </section>
         )}
