@@ -411,6 +411,11 @@
   transition: opacity 0.1s ease-in-out;
 }
 
+.design-info-panel .fake-link[data-copied='true']::after {
+  content: 'Link copied! (for later)';
+  opacity: 1;
+}
+
 .design-info-panel .fake-link:hover::after,
 .design-info-panel .fake-link:focus-visible::after {
   opacity: 1;

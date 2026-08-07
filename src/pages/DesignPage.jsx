@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PROJECTS from '../constants/projects.json';
 import { DESIGN_FILTERS } from '../constants/constants';
 import { SCREEN_WIDTHS as SCREEN } from '../constants/constants';
-import { getTeamVotes, TEAM_VOTE_EVENT } from '../utils/teamVotes';
+import { getTeamVotes, TEAM_VOTE_EVENT, TEAM_VOTE_STORAGE_KEY } from '../utils/teamVotes';
 import './DesignPage.css';
 
 const PANEL = {
@@ -15,7 +15,7 @@ const PANEL = {
 const PANEL_ANIMATION_MS = 1000;
 const PANEL_SWITCH_PAUSE_MS = 50;
 const TEAM_VOTE_BAR_INCREMENT = 0.5;
-const TEAM_VOTE_SESSION_KEY = 'team-vote';
+const GITHUB_ADDRESS = 'https://github.com/getdagnis';
 
 function DesignPage({ gridAnimationRun = 0 }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -27,10 +27,18 @@ function DesignPage({ gridAnimationRun = 0 }) {
   const [renderedPanel, setRenderedPanel] = useState(null);
   const [openRecruiterQuestions, setOpenRecruiterQuestions] = useState({ professional: true });
   const [teamVoteCounts, setTeamVoteCounts] = useState({ ok: 0, perfect: 0 });
-  const [teamVote, setTeamVote] = useState(() => sessionStorage.getItem(TEAM_VOTE_SESSION_KEY) || null);
+  const [teamVote, setTeamVote] = useState(() => localStorage.getItem(TEAM_VOTE_STORAGE_KEY) || null);
+  const [githubLinkCopied, setGithubLinkCopied] = useState(false);
   const panelSwitchTimeout = useRef(null);
+  const githubCopyTimeout = useRef(null);
 
-  useEffect(() => () => window.clearTimeout(panelSwitchTimeout.current), []);
+  useEffect(
+    () => () => {
+      window.clearTimeout(panelSwitchTimeout.current);
+      window.clearTimeout(githubCopyTimeout.current);
+    },
+    [],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -43,7 +51,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
           perfect: Number(data.perfect) || 0,
         });
         setTeamVote((currentVote) => currentVote || data.userVote || null);
-    })
+      })
       .catch(() => {
         // Keep zero counts visible when the Worker is unavailable.
       });
@@ -54,7 +62,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
   }, []);
 
   useEffect(() => {
-    const storedVote = sessionStorage.getItem(TEAM_VOTE_SESSION_KEY);
+    const storedVote = localStorage.getItem(TEAM_VOTE_STORAGE_KEY);
     if (storedVote === 'ok' || storedVote === 'perfect') {
       setTeamVote(storedVote);
     }
@@ -66,7 +74,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
       if (vote !== 'ok' && vote !== 'perfect') return;
 
       setTeamVote(vote);
-      sessionStorage.setItem(TEAM_VOTE_SESSION_KEY, vote);
+      localStorage.setItem(TEAM_VOTE_STORAGE_KEY, vote);
       setTeamVoteCounts((currentCounts) => ({
         ...currentCounts,
         [vote]: currentCounts[vote] + 1,
@@ -215,8 +223,22 @@ function DesignPage({ gridAnimationRun = 0 }) {
     setActivePanel(panel);
   };
 
-  const handleGithubClick = () => {
-    console.log('This is not a link. You must remain here ');
+  const handleGithubClick = async (event) => {
+    event.preventDefault();
+
+    if (!navigator.clipboard) return;
+
+    try {
+      await navigator.clipboard.writeText(GITHUB_ADDRESS);
+      setGithubLinkCopied(true);
+      window.clearTimeout(githubCopyTimeout.current);
+      githubCopyTimeout.current = window.setTimeout(() => {
+        setGithubLinkCopied(false);
+        githubCopyTimeout.current = null;
+      }, 3000);
+    } catch {
+      // Keep the original message when the browser denies clipboard access.
+    }
   };
 
   const handleRecruiterQuestionToggle = (question) => {
@@ -275,7 +297,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
           <div className="info-panel-controls">
             <button
               type="button"
-              className={`panel-toggle${activePanel === PANEL.WHAT_IS_THIS ? ' active' : ''}`}
+              className={`panel-toggle armageddon${activePanel === PANEL.WHAT_IS_THIS ? ' active' : ''}`}
               aria-expanded={activePanel === PANEL.WHAT_IS_THIS}
               aria-controls="design-info-panel"
               onClick={() => handlePanelToggle(PANEL.WHAT_IS_THIS)}
@@ -284,7 +306,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
             </button>
             <button
               type="button"
-              className={`panel-toggle${activePanel === PANEL.RECRUITERS ? ' active' : ''}`}
+              className={`panel-toggle armageddon${activePanel === PANEL.RECRUITERS ? ' active' : ''}`}
               aria-expanded={activePanel === PANEL.RECRUITERS}
               aria-controls="recruiters-panel"
               onClick={() => handlePanelToggle(PANEL.RECRUITERS)}
@@ -296,7 +318,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
       </div>
       <div className={`design-info-panel-wrapper${activePanel ? ' info-panel-shown' : ''}`} aria-hidden={!activePanel}>
         {renderedPanel === PANEL.WHAT_IS_THIS && (
-          <section id="design-info-panel" className="design-info-panel" aria-label="About this design portfolio">
+          <section id="design-info-panel" className="design-info-panel armageddon" aria-label="About this design portfolio">
             <h2>what is this?</h2>
             <p>
               Things I designed before code gradually took over. Logos and complete visual identities. Websites, apps,
@@ -314,7 +336,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
             </p>
             <p>
               For development work, browse{' '}
-              <a className="fake-link" onClick={handleGithubClick}>
+              <a className="fake-link armageddon" data-copied={githubLinkCopied || undefined} onClick={handleGithubClick}>
                 github.com/getdagnis
               </a>{' '}
               or get in touch. And try the arrows. Not telling you which arrows. One of them does something it
@@ -322,8 +344,8 @@ function DesignPage({ gridAnimationRun = 0 }) {
             </p>
             <p>Btw, in case you wondered what the Work In Progress modal buttons do :)</p>
             <div className="team-vote-preview" aria-label="Team rating preview">
-              <div className="team-vote-row">
-                <span>Team OK{teamVote === 'ok' ? ' (you)' : ''}</span>
+              <div className="team-vote-row armageddon">
+                <span>Team OK{teamVote === 'ok' ? ' (you, how classy)' : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.ok > 0 && (
                     <span
@@ -335,8 +357,8 @@ function DesignPage({ gridAnimationRun = 0 }) {
                   <span className="team-vote-count team-vote-count-ok">{teamVoteCounts.ok}</span>
                 </div>
               </div>
-              <div className="team-vote-row">
-                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you, great!)' : ''}</span>
+              <div className="team-vote-row armageddon">
+                <span>Team PERFECT!{teamVote === 'perfect' ? " (you and you're awesome!)" : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.perfect > 0 && (
                     <span
@@ -352,13 +374,13 @@ function DesignPage({ gridAnimationRun = 0 }) {
           </section>
         )}
         {renderedPanel === PANEL.RECRUITERS && (
-          <section id="recruiters-panel" className="design-info-panel" aria-label="Information for recruiters">
+          <section id="recruiters-panel" className="design-info-panel armageddon" aria-label="Information for recruiters">
             <h2>For Recruiters</h2>
             <div className="recruiter-qa">
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.professional)}
                   aria-controls="recruiter-answer-professional"
                   onClick={() => handleRecruiterQuestionToggle('professional')}
@@ -379,7 +401,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.strongest)}
                   aria-controls="recruiter-answer-strongest"
                   onClick={() => handleRecruiterQuestionToggle('strongest')}
@@ -400,7 +422,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.proof)}
                   aria-controls="recruiter-answer-proof"
                   onClick={() => handleRecruiterQuestionToggle('proof')}
@@ -425,7 +447,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.practice)}
                   aria-controls="recruiter-answer-practice"
                   onClick={() => handleRecruiterQuestionToggle('practice')}
@@ -453,7 +475,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.roles)}
                   aria-controls="recruiter-answer-roles"
                   onClick={() => handleRecruiterQuestionToggle('roles')}
@@ -475,7 +497,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
               <div className="recruiter-question">
                 <button
                   type="button"
-                  className="recruiter-question-toggle"
+                  className="recruiter-question-toggle armageddon"
                   aria-expanded={Boolean(openRecruiterQuestions.status)}
                   aria-controls="recruiter-answer-status"
                   onClick={() => handleRecruiterQuestionToggle('status')}
@@ -495,17 +517,19 @@ function DesignPage({ gridAnimationRun = 0 }) {
               </div>
             </div>
             <div className="recruiter-links" aria-label="Recruiter links">
-              <a href="/cv-dagnis_skurbe-2026.pdf" download>
+              <a className="armageddon" href="/cv-dagnis_skurbe-2026.pdf" download>
                 CV
               </a>
               {/* <Link to="/cv">CV (ATS)</Link> */}
-              <a href="https://github.com/getdagnis" target="_blank" rel="noreferrer">
+              <a className="armageddon" href="https://github.com/getdagnis" target="_blank" rel="noreferrer">
                 GitHub
               </a>
-              <a href="https://linkedin.com/in/getdagnis" target="_blank" rel="noreferrer">
+              <a className="armageddon" href="https://linkedin.com/in/getdagnis" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
-              <Link to="/contact">Quick Contact</Link>
+              <Link className="armageddon" to="/contact">
+                Quick Contact
+              </Link>
             </div>
           </section>
         )}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import DesignPage from './DesignPage';
@@ -12,13 +12,22 @@ function WipPage() {
   const location = useLocation();
   const [gridAnimationRun, setGridAnimationRun] = useState(0);
   const [showWipModal, setShowWipModal] = useState(
-    () => SHOW_WIP_MODAL && location.pathname === '/' && sessionStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
+    () => SHOW_WIP_MODAL && location.pathname === '/' && localStorage.getItem(WIP_ACKNOWLEDGED_KEY) !== 'true',
   );
+  const modalShownAt = useRef(null);
+
+  useEffect(() => {
+    if (!showWipModal) return undefined;
+
+    modalShownAt.current = performance.now();
+    return undefined;
+  }, [showWipModal]);
 
   const handleWipAcknowledgement = (vote) => {
-    sessionStorage.setItem(WIP_ACKNOWLEDGED_KEY, 'true');
+    const durationMs = Math.round(performance.now() - modalShownAt.current);
+    localStorage.setItem(WIP_ACKNOWLEDGED_KEY, 'true');
     window.dispatchEvent(new CustomEvent(TEAM_VOTE_EVENT, { detail: { vote } }));
-    submitTeamVote(vote).catch(() => {
+    submitTeamVote(vote, { durationMs }).catch(() => {
       // Keep the local reveal even when the Worker is unavailable.
     });
     setGridAnimationRun((currentRun) => currentRun + 1);
