@@ -1,0 +1,81 @@
+.archive-project-card,
+.archive-gallery-placeholder {
+  background: var(--colorGrey2);
+  border-radius: var(--radiusSmall);
+}
+
+.archive-project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  padding: 2rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  background: var(--colorGrey4);
+  color: white;
+}
+
+.archive-project-card h3 {
+  margin: 0 0 1.25rem;
+  width: fit-content;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.archive-project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.archive-gallery-placeholder {
+  position: relative;
+  display: flex;
+  min-height: 20rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.archive-gallery-placeholder img {
+  width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+  opacity: 0.15;
+}
+
+@media screen and (max-width: 768px) {
+  .archive-project-gallery {
+    display: block;
+  }
+
+  .archive-gallery-placeholder {
+    min-height: 22rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .archive-gallery-placeholder {
+    min-height: 18rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .archive-gallery-placeholder {
+    min-height: 16rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .archive-gallery-placeholder {
+    min-height: 12rem;
+  }
+}

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import DesignProjectsList from '../components/DesignProjectsList';
 import ProjectReactions from '../components/ProjectReactions';
+import ArchiveProjectPlaceholder from '../components/ArchiveProjectPlaceholder';
 import ButtonNextProject from '../components-ui/ButtonNextProject';
 
 import PROJECTS from '../constants/projects.json';
@@ -14,6 +15,7 @@ import './DesignProjectPage.css';
 function DesignProjectPage() {
   const { key: projectKey } = useParams();
   const proj = PROJECTS.find((obj) => obj.key === projectKey);
+  const isArchiveProject = Boolean(proj && proj.images.length === 0);
   const isMobile = useMemo(() => window.innerWidth < 768, []);
   const [modalImage, setModalImage] = useState(null);
   const [disableAnimations, setDisableAnimations] = useState(false);
@@ -164,27 +166,42 @@ function DesignProjectPage() {
             {proj.work}
           </h6>
         </div>
-        <div className="title-image armageddon">
-          <img src={`../../proj-img/${proj.key}/${proj.mainImage}`} alt={proj.name} className="main-img" />
-          <div className="description">
-            <p>{proj.description}</p>
-            {proj.site && (
-              <p>
-                Website:{' '}
-                <span>
-                  <a href={`http://${proj.site}`} target="_blank">
-                    {proj.site}
-                  </a>
-                </span>
-              </p>
-            )}
-            <p>
-              Year: <span>{proj.year}</span>
-            </p>
-          </div>
+        <div className={`title-image armageddon${isArchiveProject ? ' archive-title-image' : ''}`}>
+          {isArchiveProject ? (
+            <div className="archive-hero-placeholder">
+              <img src={`/thumbs/${proj.key}.svg`} alt={proj.name} className="archive-logo" />
+            </div>
+          ) : (
+            <img src={`../../proj-img/${proj.key}/${proj.mainImage}`} alt={proj.name} className="main-img" />
+          )}
+          {isArchiveProject ? (
+            <ArchiveProjectPlaceholder projectKey={proj.key} logoSrc={`/thumbs/${proj.key}.svg`} />
+          ) : (
+            <div className="description">
+              <div className="description-logo">
+                <img src={`/thumbs/${proj.key}.svg`} alt="" aria-hidden="true" />
+              </div>
+              <div className="description-copy">
+                <p>{proj.description}</p>
+                {proj.site && (
+                  <p>
+                    Website:{' '}
+                    <span>
+                      <a href={`http://${proj.site}`} target="_blank" rel="noreferrer">
+                        {proj.site}
+                      </a>
+                    </span>
+                  </p>
+                )}
+                <p>
+                  Year: <span>{proj.year}</span>
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      <div id="project-grid" className={`project-grid${proj.grid ? proj.grid : '1'}`}>
+      {!isArchiveProject && <div id="project-grid" className={`project-grid${proj.grid ? proj.grid : '1'}`}>
         {proj.images.map((image, index) => (
           <ImageContainer
             image={image}
@@ -197,7 +214,7 @@ function DesignProjectPage() {
             disableAnimations={disableAnimations}
           />
         ))}
-      </div>
+      </div>}
       <ScrollRestoration />
       <div id="previous-next">
         <div id="previous-next">
@@ -209,7 +226,7 @@ function DesignProjectPage() {
           </Link>
         </div>
       </div>
-      <ProjectReactions projectKey={projectKey} />
+      {!isArchiveProject && <ProjectReactions projectKey={projectKey} />}
       <div className="project-divider"></div>
       <DesignProjectsList currentProject={projectKey} />
       {modalImage && <ImageModal imageSrc={modalImage} onClose={closeModal} />}

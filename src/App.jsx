@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ReactGA from 'react-ga4';
+import { ReactGAImplementation } from 'react-ga4';
 
 import { AppProvider } from './context/AppContext';
 import Header from './layout/Header';
@@ -10,6 +10,7 @@ import './App.css';
 
 // Google Analytics
 const TRACKING_ID = 'G-JWRXKK1QPP';
+const ReactGA = new ReactGAImplementation();
 ReactGA.initialize(TRACKING_ID);
 
 function App({ children }) {

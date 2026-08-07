@@ -12,7 +12,7 @@
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   z-index: 999;
-  transition: all 2s ease;
+  transition: opacity 0.2s ease;
 }
 
 #contact-modal .subtitle {

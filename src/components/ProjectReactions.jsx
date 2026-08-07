@@ -120,8 +120,8 @@ const ProjectReactions = ({ projectKey }) => {
                   activeReactionKey === null
                     ? 'reaction-default'
                     : key === activeReactionKey
-                    ? 'reaction-active'
-                    : 'reaction-inactive'
+                      ? 'reaction-active'
+                      : 'reaction-inactive'
                 }
                 onClick={() => handleReactionClick(key)}
               />

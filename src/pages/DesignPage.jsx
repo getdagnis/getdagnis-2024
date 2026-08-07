@@ -318,7 +318,11 @@ function DesignPage({ gridAnimationRun = 0 }) {
       </div>
       <div className={`design-info-panel-wrapper${activePanel ? ' info-panel-shown' : ''}`} aria-hidden={!activePanel}>
         {renderedPanel === PANEL.WHAT_IS_THIS && (
-          <section id="design-info-panel" className="design-info-panel armageddon" aria-label="About this design portfolio">
+          <section
+            id="design-info-panel"
+            className="design-info-panel armageddon"
+            aria-label="About this design portfolio"
+          >
             <h2>what is this?</h2>
             <p>
               Things I designed before code gradually took over. Logos and complete visual identities. Websites, apps,
@@ -336,16 +340,20 @@ function DesignPage({ gridAnimationRun = 0 }) {
             </p>
             <p>
               For development work, browse{' '}
-              <a className="fake-link armageddon" data-copied={githubLinkCopied || undefined} onClick={handleGithubClick}>
+              <a
+                className="fake-link armageddon"
+                data-copied={githubLinkCopied || undefined}
+                onClick={handleGithubClick}
+              >
                 github.com/getdagnis
               </a>{' '}
               or get in touch. And try the arrows. Not telling you which arrows. One of them does something it
               shouldn’t.
             </p>
-            <p>Btw, in case you wondered what the Work In Progress modal buttons do :)</p>
+            <p>Btw, in case you wondered what the work in progress buttons do :)</p>
             <div className="team-vote-preview" aria-label="Team rating preview">
               <div className="team-vote-row armageddon">
-                <span>Team OK{teamVote === 'ok' ? ' (you, how classy)' : ''}</span>
+                <span>Team OK{teamVote === 'ok' ? ' (you!)' : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.ok > 0 && (
                     <span
@@ -358,7 +366,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
                 </div>
               </div>
               <div className="team-vote-row armageddon">
-                <span>Team PERFECT!{teamVote === 'perfect' ? " (you and you're awesome!)" : ''}</span>
+                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you!)' : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.perfect > 0 && (
                     <span
@@ -374,7 +382,11 @@ function DesignPage({ gridAnimationRun = 0 }) {
           </section>
         )}
         {renderedPanel === PANEL.RECRUITERS && (
-          <section id="recruiters-panel" className="design-info-panel armageddon" aria-label="Information for recruiters">
+          <section
+            id="recruiters-panel"
+            className="design-info-panel armageddon"
+            aria-label="Information for recruiters"
+          >
             <h2>For Recruiters</h2>
             <div className="recruiter-qa">
               <div className="recruiter-question">

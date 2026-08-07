@@ -1,0 +1,36 @@
+.modal-button {
+  color: black;
+  font: inherit;
+  font-weight: 600;
+  width: fit-content;
+  height: auto;
+  min-height: 0;
+  min-width: 12rem;
+  max-width: fit-content;
+  text-align: center;
+  padding: 0.55rem 1.15rem;
+  border: 2.25px solid black;
+  border-radius: calc(var(--radius) / 1.5);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(256, 256, 256, 0.5);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.modal-button:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+@media (max-width: 620px) {
+  .modal-button {
+    min-width: 10rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal-button {
+    min-width: 7rem;
+  }
+}
