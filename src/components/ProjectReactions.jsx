@@ -105,31 +105,46 @@ const ProjectReactions = ({ projectKey }) => {
     }, 1000);
   };
 
+  const reactionEntries = reactions?.reactions ? Object.entries(reactions.reactions) : [];
+  const leadingReaction = reactionEntries.reduce((leader, entry) => {
+    if (!leader || (entry[1].count || 0) > (leader[1].count || 0)) return entry;
+    return leader;
+  }, null);
+  const leadingReactionKey = leadingReaction && leadingReaction[1].count > 0 ? leadingReaction[0] : null;
+
   return (
     <div id="project-reactions">
       <h3 className="reactions-title">Your reaction</h3>
       <ul className="reactions">
         {reactions &&
           reactions['reactions'] &&
-          Object.entries(reactions['reactions']).map(([key, reaction], index) => (
-            <li key={index}>
+          reactionEntries.map(([key, reaction]) => {
+            const isLeadingReaction = key === leadingReactionKey;
+            const isActiveReaction = key === activeReactionKey;
+            const hasVotes = reaction.count > 0;
+            const reactionClassName = [
+              isLeadingReaction && 'reaction-leader',
+              isActiveReaction && 'reaction-active',
+              hasVotes && 'reaction-has-votes',
+              activeReactionKey !== null && !isLeadingReaction && !isActiveReaction && 'reaction-inactive',
+            ]
+              .filter(Boolean)
+              .join(' ');
+
+            return (
+            <li key={key}>
               <img
                 src={imageMap[reaction.img]}
                 alt={reaction.alt}
-                className={
-                  activeReactionKey === null
-                    ? 'reaction-default'
-                    : key === activeReactionKey
-                      ? 'reaction-active'
-                      : 'reaction-inactive'
-                }
+                className={reactionClassName || 'reaction-default'}
                 onClick={() => handleReactionClick(key)}
               />
               <span className={`reaction-count ${isCountTransitioning === key ? 'reaction-count-updating' : ''}`}>
                 {reaction.alt}&nbsp;{reaction.count > 0 && `(${reaction.count})`}
               </span>
             </li>
-          ))}
+            );
+          })}
       </ul>
     </div>
   );

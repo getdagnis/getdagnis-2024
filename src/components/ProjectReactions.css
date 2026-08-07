@@ -79,7 +79,13 @@
   transform: scale(1.08);
 }
 
+#project-reactions .reaction-leader {
+  transform: scale(1.08);
+}
+
 #project-reactions .reaction-active ~ span,
+#project-reactions .reaction-leader ~ span,
+#project-reactions .reaction-has-votes ~ span,
 #project-reactions li img:hover ~ span {
   opacity: 1;
   transition: opacity 1s ease 0.5s;
