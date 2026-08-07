@@ -175,7 +175,12 @@ function DesignProjectPage() {
             <img src={`../../proj-img/${proj.key}/${proj.mainImage}`} alt={proj.name} className="main-img" />
           )}
           {isArchiveProject ? (
-            <ArchiveProjectPlaceholder projectKey={proj.key} logoSrc={`/thumbs/${proj.key}.svg`} />
+            <ArchiveProjectPlaceholder
+              key={proj.key}
+              projectKey={proj.key}
+              projectName={proj.name}
+              logoSrc={`/thumbs/${proj.key}.svg`}
+            />
           ) : (
             <div className="description">
               <div className="description-logo">

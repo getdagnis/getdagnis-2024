@@ -4,59 +4,80 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import './ContactForm.css';
 
+const ARCHIVE_COMMENTS_URL = 'https://getdagnis-worker-prod.getdagnis.workers.dev/archive-comments';
+
+function getArchiveCommentStorageKey(projectKey) {
+  return `archive-comment-${projectKey}-text`;
+}
+
 function ContactForm() {
   const [state, handleSubmit] = useForm('mblrvgbl');
   const [email, setEmail] = React.useState('');
   const [message, setMessage] = React.useState('');
+  const [archiveError, setArchiveError] = React.useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const emailRef = useRef(null);
-  const emailIsValid = /^[A-Za-z0-9._-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}$/.test(email.trim());
+  const messageRef = useRef(null);
+  const searchParams = new URLSearchParams(location.search);
+  const archiveProjectKey = location.state?.archiveProjectKey || searchParams.get('archiveProjectKey');
+  const archiveProjectName = location.state?.archiveProjectName || searchParams.get('archiveProjectName');
+  const isArchiveComment = Boolean(archiveProjectKey && archiveProjectName);
+  const archiveCommentStorageKey = isArchiveComment ? getArchiveCommentStorageKey(archiveProjectKey) : null;
+  const returnPath = isArchiveComment ? `/design/project/${archiveProjectKey}` : '/design';
+  const emailIsValid =
+    (isArchiveComment && email.trim() === '') ||
+    /^[A-Za-z0-9._-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}$/.test(email.trim());
 
   useEffect(() => {
     const loadValues = () => {
       const savedEmail = localStorage.getItem('email');
-      const savedMessage = localStorage.getItem('message');
+      const savedMessage = localStorage.getItem(archiveCommentStorageKey || 'message');
 
       if (savedEmail) setEmail(savedEmail);
       if (savedMessage) setMessage(savedMessage);
     };
 
     loadValues();
-  }, []);
+  }, [archiveCommentStorageKey]);
 
   useEffect(() => {
-    if (location.state?.userMessage) {
+    if (!isArchiveComment && location.state?.userMessage) {
       setMessage('It generated this one for me: \n\n' + location.state.userMessage);
     }
-  }, [location.state?.userMessage]);
+  }, [isArchiveComment, location.state?.userMessage]);
 
   useEffect(() => {
-    if (emailRef.current) {
-      emailRef.current.focus();
+    const focusTarget = isArchiveComment ? messageRef.current : emailRef.current;
+    if (focusTarget) {
+      focusTarget.focus();
     }
-  }, []);
+  }, [isArchiveComment]);
 
   const handleClose = useCallback(() => {
     localStorage.setItem('email', email);
-    localStorage.setItem('message', message);
+    localStorage.setItem(archiveCommentStorageKey || 'message', message);
 
     // Remove focus and fade out
     document.getElementById('contact-modal').style.opacity = '0';
 
     // Navigate after animation
     setTimeout(() => {
-      navigate({ pathname: `/design` });
+      navigate({ pathname: returnPath });
     }, 100);
-  }, [email, message, navigate]);
+  }, [archiveCommentStorageKey, email, message, navigate, returnPath]);
 
   // Handle form submission success
   useEffect(() => {
     if (state.succeeded) {
       // Clear message after successful submission
-      localStorage.removeItem('message');
+      if (isArchiveComment) {
+        localStorage.setItem(archiveCommentStorageKey, 'submitted');
+      } else {
+        localStorage.removeItem('message');
+      }
     }
-  }, [state.succeeded]);
+  }, [archiveCommentStorageKey, isArchiveComment, state.succeeded]);
 
   // Handle email changes
   useEffect(() => {
@@ -65,8 +86,48 @@ function ContactForm() {
 
   // Handle message changes
   useEffect(() => {
-    localStorage.setItem('message', message);
-  }, [message]);
+    localStorage.setItem(archiveCommentStorageKey || 'message', message);
+  }, [archiveCommentStorageKey, message]);
+
+  const handleFormSubmit = async (event) => {
+    const form = event.currentTarget;
+    const formspreeSubmission = handleSubmit(event);
+
+    if (isArchiveComment) {
+      setArchiveError('');
+
+      try {
+        const response = await fetch(ARCHIVE_COMMENTS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            projectKey: archiveProjectKey,
+            reason: message,
+            email: email.trim() || null,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
+            device: navigator.userAgent,
+          }),
+        });
+
+        if (!response.ok) throw new Error(`Archive comment failed with status ${response.status}`);
+
+        const metadata = await response.json();
+        Object.entries({
+          archive_country: metadata.country || 'unknown',
+          archive_device: metadata.device || 'unknown',
+          archive_submitted_at: metadata.submittedAt || 'unknown',
+        }).forEach(([name, value]) => {
+          const field = form.elements.namedItem(name);
+          if (field) field.value = value;
+        });
+      } catch (error) {
+        console.error('Archive comment failed:', error);
+        setArchiveError('Archive metadata could not be saved, but your email will still be sent.');
+      }
+    }
+
+    await formspreeSubmission;
+  };
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -96,8 +157,8 @@ function ContactForm() {
           <div
             className="modal-button"
             onClick={() => {
-              navigate({ pathname: `/design` });
-              localStorage.removeItem('message');
+              navigate({ pathname: returnPath });
+              if (!isArchiveComment) localStorage.removeItem('message');
             }}
           >
             RETURN
@@ -109,27 +170,20 @@ function ContactForm() {
 
   return (
     <div id="contact-modal">
-      <form id="contact-form" onSubmit={handleSubmit}>
+      <form id="contact-form" onSubmit={handleFormSubmit}>
         <div className="top" style={{ animationDelay: '0.3s' }}>
           <label className="label" htmlFor="email">
-            Reach out
+            {isArchiveComment ? 'Tell me why...' : 'Reach out'}
           </label>
         </div>
-        <input
-          id="email"
-          ref={emailRef}
-          style={{ animationDelay: '0.9s' }}
-          type="email"
-          name="_replyto"
-          placeholder="reply-to email"
-          pattern="[A-Za-z0-9._-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <ValidationError prefix="Email" field="_replyto" errors={state.errors} />
+        {isArchiveComment && (
+          <label className="archive-comment-label" htmlFor="message">
+            {archiveProjectName} needs to be uploaded:
+          </label>
+        )}
         <textarea
           id="message"
+          ref={messageRef}
           style={{ animationDelay: '1.2s' }}
           name="message"
           placeholder="message"
@@ -138,11 +192,34 @@ function ContactForm() {
           value={message}
         />
         <ValidationError prefix="Message" field="message" errors={state.errors} />
+        <input
+          id="email"
+          ref={emailRef}
+          style={{ animationDelay: '0.9s' }}
+          type="email"
+          name="_replyto"
+          placeholder="optional reply-to email"
+          pattern="[A-Za-z0-9._-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}"
+          value={email}
+          required={!isArchiveComment}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <ValidationError prefix="Email" field="_replyto" errors={state.errors} />
+        {isArchiveComment && (
+          <>
+            <input type="hidden" name="archive_project" value={archiveProjectName} readOnly />
+            <input type="hidden" name="archive_project_key" value={archiveProjectKey} readOnly />
+            <input type="hidden" name="archive_country" readOnly />
+            <input type="hidden" name="archive_device" readOnly />
+            <input type="hidden" name="archive_submitted_at" readOnly />
+          </>
+        )}
+        {archiveError && <div className="error">{archiveError}</div>}
         <button
           className="modal-button"
-          style={{ opacity: message.length > 5 && emailIsValid ? 1 : 0.5 }}
+          style={{ opacity: message.trim().length > 5 && emailIsValid ? 1 : 0.5 }}
           type="submit"
-          disabled={state.submitting || message.length <= 5 || !emailIsValid}
+          disabled={state.submitting || message.trim().length <= 5 || !emailIsValid}
         >
           {state.submitting ? 'SENDING...' : 'SEND'}
         </button>

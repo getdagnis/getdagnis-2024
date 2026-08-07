@@ -64,6 +64,14 @@
   text-align: left;
 }
 
+#contact-form .archive-comment-label {
+  width: 100%;
+  color: black;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+}
+
 #contact-form input,
 #contact-form textarea {
   font-family: inherit;

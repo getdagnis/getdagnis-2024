@@ -418,15 +418,15 @@ function DesignPage({ gridAnimationRun = 0 }) {
                   aria-controls="recruiter-answer-strongest"
                   onClick={() => handleRecruiterQuestionToggle('strongest')}
                 >
-                  what are you specialising at?
+                  what are you strongest at?
                 </button>
                 <div
                   id="recruiter-answer-strongest"
                   className={`recruiter-answer${openRecruiterQuestions.strongest ? ' open' : ''}`}
                 >
                   <p>
-                    Complex responsive interfaces. Frontend architecture. Design systems. The point where brand design,
-                    product decisions and engineering need to become one job—not three meetings.
+                    Interactive responsive interfaces. Frontend architecture. Design systems. The point where design,
+                    product decisions and engineering need to become one job—not three separate meetings.
                   </p>
                 </div>
               </div>
@@ -445,7 +445,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
                   id="recruiter-answer-proof"
                   className={`recruiter-answer${openRecruiterQuestions.proof ? ' open' : ''}`}
                 >
-                  <p>React professionally since 2018. Web as early as early 2000s.</p>
+                  <p>React professionally since 2018. Web as early as 2000s.</p>
                   <p>
                     Recent work includes security-sensitive platforms, participation in startup builds, maintaining
                     design systems for international enterprise products serving millions, third-party API integrations
@@ -456,34 +456,6 @@ function DesignPage({ gridAnimationRun = 0 }) {
                 </div>
               </div>
 
-              <div className="recruiter-question">
-                <button
-                  type="button"
-                  className="recruiter-question-toggle armageddon"
-                  aria-expanded={Boolean(openRecruiterQuestions.practice)}
-                  aria-controls="recruiter-answer-practice"
-                  onClick={() => handleRecruiterQuestionToggle('practice')}
-                >
-                  can I see that in practice?
-                </button>
-                <div
-                  id="recruiter-answer-practice"
-                  className={`recruiter-answer${openRecruiterQuestions.practice ? ' open' : ''}`}
-                >
-                  <p>You are looking at one example.</p>
-                  <p>
-                    This site was designed from scratch mainly between 2019–2024. Partly outdated but code and CSS was
-                    written line by line, initial animation effects (such as the &quot;red walking rectangle&quot;) as
-                    Vanilla JS. CSS animations hand written from scratch. Firebase handles voting. OpenRouter API calls
-                    run through Cloudflare Workers.
-                  </p>
-                  <p>
-                    The original Vite + React build predates AI agents (2019–2024). But they make up a large part of my
-                    work now: implementation, migrations, testing, debugging and review. I direct the work, inspect the
-                    output and own what ships.
-                  </p>
-                </div>
-              </div>
               <div className="recruiter-question">
                 <button
                   type="button"
@@ -500,8 +472,8 @@ function DesignPage({ gridAnimationRun = 0 }) {
                 >
                   <p>
                     Senior React/Next.js (I like having hands dirty), Lead Frontend, Full-stack Developer and Technical
-                    Product Owner—all seem to be good fits. Head of Design—always. AI integrations lead—this would be a
-                    new one.
+                    Product Owner—all could be good fits. AI transition lead—this is something new I feel comfortable to
+                    try.
                   </p>
                 </div>
               </div>
@@ -521,9 +493,9 @@ function DesignPage({ gridAnimationRun = 0 }) {
                   className={`recruiter-answer${openRecruiterQuestions.status ? ' open' : ''}`}
                 >
                   <p>
-                    Not committed to a long-term role at the time of writing, contact for status updates. Open to
-                    permanent or contract work, full-time or part-time, remote or hybrid Riga based. Relocation is on
-                    the table as well.
+                    No long-term commitments at the time of writing (summer 2026), contact for status updates. Open to
+                    permanent or contract work, full-time or part-time, remote or hybrid Riga based. Partial relocation
+                    within EU could be discussed.
                   </p>
                 </div>
               </div>

@@ -7,18 +7,30 @@
 .archive-project-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 12rem;
+  height: 16rem;
+  box-sizing: border-box;
   padding: 2rem 1rem;
   margin-top: 0.5rem;
   text-align: center;
   background: var(--colorGrey4);
   color: white;
+  transition: none;
+}
+
+.archive-project-card.archive-voted {
+  background: var(--colorGrey4);
+}
+
+.archive-vote-button {
+  min-width: 20rem;
+  transition: none;
 }
 
 .archive-project-card h3 {
-  margin: 0 0 1.25rem;
+  margin: 0;
   width: fit-content;
   text-align: center;
   text-transform: uppercase;
@@ -59,6 +71,17 @@
   .archive-gallery-placeholder {
     min-height: 22rem;
     margin-bottom: 0.5rem;
+  }
+
+  .archive-project-card {
+    height: 15rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .archive-vote-button {
+    width: 100%;
+    min-width: 0;
   }
 }
 
