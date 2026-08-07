@@ -130,9 +130,17 @@ const ProjectReactions = ({ projectKey }) => {
             ]
               .filter(Boolean)
               .join(' ');
+            const reactionItemClassName = [
+              'reaction-item',
+              isLeadingReaction && 'reaction-leader',
+              isActiveReaction && 'reaction-selected',
+              hasVotes && 'reaction-voted',
+            ]
+              .filter(Boolean)
+              .join(' ');
 
             return (
-            <li key={key}>
+            <li key={key} className={reactionItemClassName}>
               <img
                 src={imageMap[reaction.img]}
                 alt={reaction.alt}
@@ -140,7 +148,8 @@ const ProjectReactions = ({ projectKey }) => {
                 onClick={() => handleReactionClick(key)}
               />
               <span className={`reaction-count ${isCountTransitioning === key ? 'reaction-count-updating' : ''}`}>
-                {reaction.alt}&nbsp;{reaction.count > 0 && `(${reaction.count})`}
+                <span className="reaction-label">{reaction.alt}</span>
+                {hasVotes && <span className="reaction-vote-count">&nbsp;({reaction.count})</span>}
               </span>
             </li>
             );

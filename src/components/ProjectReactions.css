@@ -91,6 +91,17 @@
   transition: opacity 1s ease 0.5s;
 }
 
+#project-reactions .reaction-item.reaction-voted > .reaction-count {
+  opacity: 0.5;
+  color: black;
+}
+
+#project-reactions .reaction-item.reaction-voted:hover > .reaction-count,
+#project-reactions .reaction-item.reaction-selected > .reaction-count,
+#project-reactions .reaction-item.reaction-leader > .reaction-count {
+  opacity: 1;
+}
+
 .reaction-inactive {
   transform: scale(0.65);
   opacity: 0.2;
