@@ -4,63 +4,63 @@
       "key": "lng_js",
       "section": "dev",
       "title": "Next.js // React // TypeScript",
-      "describe": "Primary production stack for building modern, content-heavy and unique single page web applications. 7+ years with React, TypeScript focusing on scalability and long-term maintainability. Experienced in both startup and large enterprise environments.",
+      "describe": "Core stack for complex, content-heavy products. React professionally since 2018; architecture and maintainability across startup and enterprise teams.",
       "class": "dev-large"
     },
     {
       "key": "lng_css",
       "section": "dev",
-      "title": "CSS3+ // SASS // LESS // JSSS",
-      "describe": "Designing complex, responsive layouts with strong focus on UX and brand-awareness",
+      "title": "CSS // Sass // Design systems",
+      "describe": "Responsive UI and design systems; real-device and BrowserStack testing.",
       "class": "dark-item regular-size"
     },
     {
       "key": "lng_html",
       "section": "dev",
-      "title": "HTML5+ // SEO",
-      "describe": "Semantic, accessible, enterprise-ready HTML, with attention to performance and scalability",
+      "title": "HTML // SEO",
+      "describe": "Semantic, accessible HTML focused on performance, structure and search.",
       "class": "dark-item regular-size"
     },
     {
       "key": "apps",
       "section": "dev",
       "title": "Mobile Apps",
-      "describe": "Experience building cross-platform/mobile applications using React Native, Expo, Electron",
+      "describe": "React Native and Expo for cross-platform mobile applications.",
       "class": "dark-item regular-size"
     },
     {
       "key": "ai",
       "section": "dev",
-      "title": "AI integration // Prompts",
-      "describe": "Real world AI integration, OpenAI/OpenRouter APIs, CloudFlare workers",
+      "title": "AI APIs // Agents",
+      "describe": "Agent workflows; OpenAI/OpenRouter APIs via Cloudflare Workers.",
       "class": "regular-size"
     },
     {
       "key": "lng_php",
       "section": "dev",
-      "title": "PHP // SQL // NoSQL",
-      "describe": "Experience using legacy and modern backend/data services, PostgreSQL, CMS",
+      "title": "Node.js // SQL",
+      "describe": "APIs, PostgreSQL, Supabase, Firebase and third-party integrations.",
       "class": "dark-item regular-size"
     },
     {
       "key": "git",
       "section": "dev",
-      "title": "Version control",
-      "describe": "Daily professional/advanced use of Git and CI/CD in large size team environments",
+      "title": "Git // CI/CD",
+      "describe": "Daily Git, code review and CI/CD across solo builds and large teams.",
       "class": "regular-size"
     },
     {
       "key": "rest",
       "section": "dev",
-      "title": "Rest APIs",
-      "describe": "Designing and integrating REST APIs for B2B platforms, 3rd-party services and internal systems",
+      "title": "REST APIs",
+      "describe": "Designing and integrating APIs for platforms, third parties and internal tools.",
       "class": "regular-size"
     },
     {
       "key": "cloud",
       "section": "dev",
-      "title": "Cloud services",
-      "describe": "Deploying and operating applications in modern cloud environments: Vercel, Cloudflare",
+      "title": "Cloud // Edge",
+      "describe": "Vercel, Cloudflare Workers, D1 and production deployments.",
       "class": "regular-size"
     },
 
@@ -68,29 +68,29 @@
       "key": "test",
       "section": "dev",
       "title": "Testing",
-      "describe": "Writing/maintaining tests as part of daily development workflow: Jest, React Testing Library",
+      "describe": "Jest, React Testing Library and pragmatic coverage in daily development.",
       "class": "regular-size"
     },
     {
       "key": "debug",
       "section": "dev",
       "title": "Debugging",
-      "describe": "Systematic debugging of frontend and API-related issues using wide range of tools",
+      "describe": "Frontend, backend and API debugging with browser and agent tooling.",
       "class": "regular-size"
     },
     {
       "key": "docker",
       "section": "dev",
-      "title": "Docker // Shell scripting",
-      "describe": "Using Docker and shell scripts for local env, tooling, automation and dev workflows",
+      "title": "Docker // Shell scripts",
+      "describe": "Local environments, automation and developer workflows.",
       "class": "regular-size"
     },
 
     {
       "key": "agile",
       "section": "dev",
-      "title": "Scrum, CI/CD, Agile",
-      "describe": "Working in Agile teams with Scrum, Kanban, CI/CD, issue tracking and team collab tools",
+      "title": "Product // Delivery",
+      "describe": "Technical ownership, planning, mentoring and cross-team delivery.",
       "class": "regular-size"
     }
   ]

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -17,8 +17,6 @@ function ContactForm() {
   const [archiveError, setArchiveError] = React.useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const emailRef = useRef(null);
-  const messageRef = useRef(null);
   const searchParams = new URLSearchParams(location.search);
   const archiveProjectKey = location.state?.archiveProjectKey || searchParams.get('archiveProjectKey');
   const archiveProjectName = location.state?.archiveProjectName || searchParams.get('archiveProjectName');
@@ -46,13 +44,6 @@ function ContactForm() {
       setMessage('It generated this one for me: \n\n' + location.state.userMessage);
     }
   }, [isArchiveComment, location.state?.userMessage]);
-
-  useEffect(() => {
-    const focusTarget = isArchiveComment ? messageRef.current : emailRef.current;
-    if (focusTarget) {
-      focusTarget.focus();
-    }
-  }, [isArchiveComment]);
 
   const handleClose = useCallback(() => {
     localStorage.setItem('email', email);
@@ -183,7 +174,7 @@ function ContactForm() {
         )}
         <textarea
           id="message"
-          ref={messageRef}
+          autoFocus
           style={{ animationDelay: '1.2s' }}
           name="message"
           placeholder="message"
@@ -194,11 +185,10 @@ function ContactForm() {
         <ValidationError prefix="Message" field="message" errors={state.errors} />
         <input
           id="email"
-          ref={emailRef}
           style={{ animationDelay: '0.9s' }}
           type="email"
           name="_replyto"
-          placeholder="optional reply-to email"
+          placeholder={isArchiveComment ? 'optional reply-to email' : 'reply-to email'}
           pattern="[A-Za-z0-9._-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,4}"
           value={email}
           required={!isArchiveComment}
@@ -217,11 +207,11 @@ function ContactForm() {
         {archiveError && <div className="error">{archiveError}</div>}
         <button
           className="modal-button"
-          style={{ opacity: message.trim().length > 5 && emailIsValid ? 1 : 0.5 }}
+          data-valid={message.trim().length > 5 && emailIsValid ? true : false}
           type="submit"
           disabled={state.submitting || message.trim().length <= 5 || !emailIsValid}
         >
-          {state.submitting ? 'SENDING...' : 'SEND'}
+          {!message.trim().length > 5 || !emailIsValid ? 'Fill form' : state.submitting ? 'SENDING...' : 'SEND'}
         </button>
         <div className="modal-close" onClick={handleClose}></div>
       </form>

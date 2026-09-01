@@ -79,7 +79,7 @@
   max-width: 40rem;
   border: 2px solid black;
   outline: none;
-  background-color: #ffffffdd;
+  background-color: var(--greyOpaque1);
   border-radius: 5px;
   font-size: 0.9rem;
   resize: none;
@@ -91,11 +91,17 @@
 
 #contact-form input::placeholder,
 #contact-form textarea::placeholder {
-  opacity: 0.8;
+  color: var(--greyOpaque2);
 }
 
 #contact-form .modal-button {
+  text-transform: uppercase;
   margin: 0;
+}
+
+#contact-form .modal-button[data-valid='false'] {
+  opacity: 0.1;
+  transition: opacity 0.6s ease-in-out;
 }
 
 #contact-form input:focus,
@@ -121,7 +127,6 @@
   right: 0;
   background: url(../assets/cross.svg) no-repeat center center;
   transition: transform 0.5s ease;
-  filter: invert(1);
 }
 
 #contact-form .modal-close:hover {
@@ -130,7 +135,7 @@
 }
 
 #contact-form .error {
-  color: red;
+  color: crimson;
 }
 
 #contact-form .success {

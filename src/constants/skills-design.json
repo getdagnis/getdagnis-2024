@@ -4,96 +4,96 @@
       "key": "graphic",
       "section": "design",
       "title": "Graphic Design",
-      "describe": "Since 2005 professionally. Have attended workshops and lectures by Stephan Sagmeister, Paul Scher, Bob Gill, Jan Wilker. 2 years attending public lectures in Royal Academy of Arts, London. Have tought a lecture course on product design in Riga Stradins’ University. ",
-      "details": "Expertise in creating visually compelling and brand-aligned designs.",
+      "describe": "Visual identities, editorial design, campaigns and digital products. Professionally since 2005—across agencies, my own studio and independent work.",
+      "details": "Visual identities, editorial design, campaigns and digital products.",
       "class": "design-large"
     },
     {
       "key": "adobe",
       "section": "design",
       "title": "Adobe Creative Suite",
-      "describe": "Since 2005 professionally. Have attended workshops and lectures by Stephan Sagmeister, Paul Scher, Bob Gill, Jan Wilker. 2 years attending public lectures in Royal Academy of Arts, London. Have tought a lecture course on product design in Riga Stradins’ University. ",
-      "details": "Proficient in Adobe software for professional graphic and video editing.",
+      "describe": "Two decades of daily work in Illustrator, Photoshop and InDesign. Production-ready artwork, not just mock-ups.",
+      "details": "Production-ready work in Illustrator, Photoshop and InDesign.",
       "class": "design-large adobe"
     },
     {
       "key": "video",
       "section": "design",
-      "title": "Video Editing // Animation",
-      "describe": "Skilled in dynamic video and animation production.",
-      "details": "Skilled in dynamic video and animation production.",
+      "title": "Video // Motion Design",
+      "describe": "Editing, motion graphics and short brand films.",
+      "details": "Editing, motion graphics and short brand films.",
       "class": "regular-size"
     },
     {
       "key": "3d",
       "section": "design",
-      "title": "3D Modeling & Animation",
-      "describe": "Advanced skills in 3D design and animation tools.",
-      "details": "Advanced skills in 3D design and animation tools.",
+      "title": "3D // Animation",
+      "describe": "Working knowledge of 3D modelling and animation.",
+      "details": "Working knowledge of 3D modelling and animation.",
       "class": "regular-size"
     },
     {
       "key": "ux",
       "section": "design",
-      "title": "User Experience Design",
-      "describe": "Designing user-centric interfaces and experiences.",
-      "details": "Designing user-centric interfaces and experiences.",
+      "title": "UX // Interface Design",
+      "describe": "Making complex interfaces feel obvious.",
+      "details": "Making complex interfaces feel obvious.",
       "class": "regular-size"
     },
     {
       "key": "creative",
       "section": "design",
       "title": "Creative Direction",
-      "describe": "Leading brand strategy, art direction, campaigns.",
-      "details": "Leading brand strategy, art direction, campaigns.",
+      "describe": "Clear ideas and visual systems from rough briefs.",
+      "details": "Clear ideas and visual systems from rough briefs.",
       "class": "regular-size"
     },
     {
       "key": "anim",
       "section": "design",
       "title": "Animation",
-      "describe": "Creating animations for web and digital platforms.",
-      "details": "Creating animations for web and digital platforms.",
+      "describe": "Purpose-built interface motion and CSS animation.",
+      "details": "Purpose-built interface motion and CSS animation.",
       "class": "regular-size"
     },
     {
       "key": "lead",
       "section": "design",
       "title": "Design Leadership",
-      "describe": "Managing teams, budgets, and product design vision.",
-      "details": "Managing teams, budgets, and product design vision.",
+      "describe": "Leading teams and decisions from brief to release.",
+      "details": "Leading teams and decisions from brief to release.",
       "class": "regular-size"
     },
     {
       "key": "copy",
       "section": "design",
       "title": "Copywriting",
-      "describe": "Crafting engaging content for marketing purposes.",
-      "details": "Crafting engaging content for marketing purposes.",
+      "describe": "Names, headlines, UI copy. Words still matter.",
+      "details": "Names, headlines and interface copy.",
       "class": "regular-size"
     },
     {
       "key": "font",
       "section": "design",
-      "title": "Font Design",
-      "describe": "Designing custom fonts for various design needs.",
-      "details": "Designing custom fonts for various design needs.",
+      "title": "Typography",
+      "describe": "Typography, lettering and occasional type work.",
+      "details": "Typography, lettering and occasional type work.",
       "class": "regular-size"
     },
     {
       "key": "product",
       "section": "design",
       "title": "Product Design",
-      "describe": "From concept to market, enhancing product usability.",
-      "details": "From concept to market, enhancing product usability.",
+      "describe": "From rough idea through UX, design and release.",
+      "details": "From rough idea through UX, design and release.",
       "class": "regular-size"
     },
     {
       "key": "web",
       "section": "design",
       "title": "Web Design",
-      "describe": "Creating responsive, visually appealing websites.",
-      "details": "Creating responsive, visually appealing websites.",
+      "describe": "Responsive web design grounded in real browsers.",
+      "details": "Responsive web design grounded in real browsers.",
       "class": "regular-size"
     }
   ]

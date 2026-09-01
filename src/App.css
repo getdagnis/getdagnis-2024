@@ -19,9 +19,9 @@
   --colorGrey6: #474c4c;
   --colorGrey7: #1e2121;
   --colorGrey8: #0f1111;
-  --greyOpaque0: rgba(168, 168, 168, 0.92);
-  --greyOpaque1: rgba(168, 168, 168, 0.82);
-  --greyOpaque2: rgba(110, 110, 110, 0.95);
+  --greyOpaque0: #f6f7f8dd;
+  --greyOpaque1: #dce0e2dd;
+  --greyOpaque2: #9ea2a4dd;
 
   --accent: #ec002ff8; /* crimson dc143cf8; red ec002ff8; electric #00c9abf8 */
   --walker: #ff0033ef; /* dark olive 3c3c1af8; crimson dc143cf8; red e30039f8; ec002ff8; ff0033ef; electric 00e1c0ef; black #000000dd; */

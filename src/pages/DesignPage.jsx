@@ -353,7 +353,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
             <p>Btw, in case you wondered what the work in progress buttons do :)</p>
             <div className="team-vote-preview" aria-label="Team rating preview">
               <div className="team-vote-row armageddon">
-                <span>Team OK{teamVote === 'ok' ? ' (you!)' : ''}</span>
+                <span>Team OK button {teamVote === 'ok' ? '(you!)' : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.ok > 0 && (
                     <span
@@ -366,7 +366,7 @@ function DesignPage({ gridAnimationRun = 0 }) {
                 </div>
               </div>
               <div className="team-vote-row armageddon">
-                <span>Team PERFECT!{teamVote === 'perfect' ? ' (you!)' : ''}</span>
+                <span>Team PERFECT! button{teamVote === 'perfect' ? '(you!)' : ''}</span>
                 <div className="team-vote-bar-line">
                   {teamVoteCounts.perfect > 0 && (
                     <span
