@@ -55,8 +55,8 @@ function WipPage() {
               <br />
               ⇝ Designed by hand. Code and CSS written line by line. Animations built from scratch.
               <br />
-              ⇝ What’s mainly missing: finding and collecting the relevant work from more than 20,000 archived files
-              made over a span of 20+ years. Progressing slowly.
+              ⇝ What’s mainly missing: finding and collecting relevant work from more than 20,000 archived files made
+              over a span of 20+ years. Progressing slowly.
               <br />
               ⇝ Since people ask—yes the logos and visual identities you can find here were designed by me.
               <br />⇝ Oh, and there are some Easter eggs hidden somewhere. Play around with <em>the arrows</em>.
