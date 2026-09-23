@@ -49,19 +49,17 @@ function WipPage() {
           <div className="wip-message">
             <h1 className="modal-extra-h1">WORK IN PROGRESS</h1>
             <ul className="wip-ul">
-              ⇝ Estimated completion: beyond human comprehension.
+              ⇝ Estimated completion: a never-ending project.
               <br />
-              ⇝ A must have disclaimer these days: the front end was built with Vite and React—before AI agents
-              (2019–2024).
+              ⇝ The front end was built with Vite and React—before AI agents (2019–2024).
               <br />
               ⇝ Designed by hand. Code and CSS written line by line. Animations built from scratch.
               <br />
-              ⇝ What’s mainly missing? Finding and collecting the relevant work from more than 20,000 archived files
-              made over a span of 20+ years. Never gonna happen.
+              ⇝ What’s mainly missing: finding and collecting the relevant work from more than 20,000 archived files
+              made over a span of 20+ years. Progressing slowly.
               <br />
-              ⇝ Since people keep asking—yes the logos and visual identities you’re about to see were designed by me.
-              <br />
-              ⇝ Oh, and there are some Easter eggs hidden somewhere. Play around with the arrows.
+              ⇝ Since people ask—yes the logos and visual identities you can find here were designed by me.
+              <br />⇝ Oh, and there are some Easter eggs hidden somewhere. Play around with <em>the arrows</em>.
               <br />
             </ul>
             <div className="wip-buttons">

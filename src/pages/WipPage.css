@@ -74,7 +74,7 @@ ul.wip-ul {
   max-width: 100%;
   margin: auto 0;
   flex: 0 0 auto;
-  background: #ffffff44;
+  background: rgb(255 255 255 / 0.5);
   padding: 2rem 3rem;
   border-radius: var(--radius);
 }
